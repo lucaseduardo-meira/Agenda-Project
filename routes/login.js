@@ -34,7 +34,8 @@ router.post("/", async (req, res) => {
 
     if (!user) return res.status(500).json("User Dont exist");
 
-    const pass = user.password;
+    var bytes = CryptoJS.AES.decrypt(user.password, process.env.PASS_SEC);
+    const pass = bytes.toString(CryptoJS.enc.Utf8);
     if (pass != req.body.password) {
       return res.status(500).json("Wrong Password");
     }
