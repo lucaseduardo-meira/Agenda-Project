@@ -5,6 +5,7 @@ router.get("/", (req, res) => {
   return res.status(200).json("Working");
 });
 
+// CREATE A NEW USER
 router.post("/register", async (req, res) => {
   try {
     const user = await new User({
@@ -18,6 +19,8 @@ router.post("/register", async (req, res) => {
     return res.status(500).json(err);
   }
 });
+
+// LOGIN A USER
 
 router.post("/", async (req, res) => {
   try {
