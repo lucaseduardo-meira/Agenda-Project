@@ -9,9 +9,14 @@ router.get("/", (req, res) => {
 // CREATE A NEW USER
 router.post("/register", async (req, res) => {
   try {
+    const pass = CryptoJS.AES.encrypt(
+      req.body.password,
+      process.env.PASS_SEC
+    ).toString();
+
     const user = await new User({
       username: req.body.username,
-      password: req.body.password,
+      password: pass,
       email: req.body.email,
     });
     await user.save();
