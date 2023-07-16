@@ -2,7 +2,7 @@ const router = require("express").Router();
 const User = require("../models/user");
 
 router.get("/", (req, res) => {
-  res.status(200).json("Working");
+  return res.status(200).json("Working");
 });
 
 router.post("/register", async (req, res) => {
@@ -13,11 +13,20 @@ router.post("/register", async (req, res) => {
       email: req.body.email,
     });
     await user.save();
-    res.status(200).json(user);
+    return res.status(200).json(user);
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 });
+
+router.post("login" , async(req,res)=> {
+    try {
+        const user = await User.findOne({ username : req.body.username})
+        if (!user) return res.status(500).json("User Dont exist")
+
+
+    }
+})
 
 module.exports = router;
 // Router to login and sign in
