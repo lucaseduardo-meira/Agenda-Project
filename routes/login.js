@@ -19,14 +19,12 @@ router.post("/register", async (req, res) => {
   }
 });
 
-router.post("login" , async(req,res)=> {
-    try {
-        const user = await User.findOne({ username : req.body.username})
-        if (!user) return res.status(500).json("User Dont exist")
-
-
-    }
-})
+router.post("login", async (req, res) => {
+  try {
+    const user = await User.findOne({ username: req.body.username });
+    if (!user) return res.status(500).json("User Dont exist");
+  } catch (err) {}
+});
 
 module.exports = router;
 // Router to login and sign in
