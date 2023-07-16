@@ -28,6 +28,11 @@ router.post("/", async (req, res) => {
 
     if (!user) return res.status(500).json("User Dont exist");
 
+    const pass = user.password;
+    if (pass != req.body.password) {
+      return res.status(500).json("Wrong Password");
+    }
+
     return res.status(200).json(user);
   } catch (err) {
     return res.status(500).json(err);
