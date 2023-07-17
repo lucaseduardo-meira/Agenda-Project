@@ -20,16 +20,14 @@ router.post("/", async (req, res) => {
     const id = req.body.userID;
     const user = await User.findById(id);
     if (!user) return res.status(500).json({ error: "User not found" });
-
-    return res.status(200).json("User found");
-    // const task = await new Task({
-    //   title: req.body.title,
-    //   date: req.body.date,
-    //   description: req.body.description,
-    //   userID : req.body.userID
-    // });
-    // await task.save();
-    // return res.status(200).json(user);
+    const task = await new Task({
+      title: req.body.title,
+      date: req.body.date,
+      description: req.body.description,
+      userID: req.body.userID,
+    });
+    await task.save();
+    return res.status(200).json(user);
   } catch (err) {
     return res.status(500).json(err);
   }
