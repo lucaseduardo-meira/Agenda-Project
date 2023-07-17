@@ -61,6 +61,11 @@ router.put("/", async (req, res) => {
 
 router.delete("/", async (req, res) => {
   try {
+    const id = req.body.userID;
+    const user = await User.findById(id);
+    if (!user) return res.status(500).json({ error: "User not found" });
+    const task = await Task.findByIdAndDelete(req.body.id);
+    return res.status(200).json(task);
   } catch (err) {
     res.status(500).json(err);
   }
