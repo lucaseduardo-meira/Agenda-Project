@@ -13,7 +13,10 @@ router.get("/", (req, res) => {
 });
 // Create a new task
 
-router.post("/", (req, res) => {});
+router.post("/", async (req, res) => {
+  try {
+  } catch (err) {}
+});
 
 // Update a task
 
