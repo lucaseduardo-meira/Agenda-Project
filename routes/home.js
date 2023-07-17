@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Task = require("../models/task");
+const user = require("../models/user");
 
 router.get("/", (req, res) => {
   res.status(200).json("Working");
@@ -21,6 +22,8 @@ router.post("/", async (req, res) => {
       date: req.body.date,
       description: req.body.description,
     });
+    await task.save();
+    return res.status(200).json(user);
   } catch (err) {}
 });
 
