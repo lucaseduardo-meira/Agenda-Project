@@ -59,4 +59,9 @@ router.put("/", async (req, res) => {
 
 // Delete a task
 
-router.delete("/", async (req, res) => {});
+router.delete("/", async (req, res) => {
+  try {
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
