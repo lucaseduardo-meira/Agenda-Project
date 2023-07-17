@@ -41,7 +41,21 @@ router.post("/", async (req, res) => {
 
 // Update a task
 
-router.put("/", (req, res) => {});
+router.put("/", async (req, res) => {
+  try {
+    const id = req.body.userID;
+    const user = await User.findById(id);
+    if (!user) return res.status(500).json({ error: "User not found" });
+    const task = await Task.findByIdAndUpdate(
+      req.body.id,
+      { $set: req.body },
+      { new: true }
+    );
+    return res.status(200).json(task);
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+});
 
 // Delete a task
 
