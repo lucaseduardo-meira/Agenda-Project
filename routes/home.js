@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const task = require("../models/task");
 const Task = require("../models/task");
 const User = require("../models/user");
 
@@ -6,9 +7,18 @@ module.exports = router;
 
 // Router for the home page
 // Show the calendar
-router.get("/", (req, res) => {
-  res.status(200).json("Working");
+router.get("/", async (req, res) => {
+  try {
+    const id = req.body.userID;
+    const user = await User.findById(id);
+    if (!user) return res.status(500).json("User not found");
+    const tasks = await Task.find({ userID: id });
+    return res.status(200).json(tasks);
+  } catch (err) {
+    return res.status(500).json(err);
+  }
 });
+
 // Create a new task
 
 router.post("/", async (req, res) => {
