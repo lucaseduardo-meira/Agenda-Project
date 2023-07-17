@@ -2,10 +2,6 @@ const router = require("express").Router();
 const Task = require("../models/task");
 const User = require("../models/user");
 
-router.get("/", (req, res) => {
-  res.status(200).json("Working");
-});
-
 module.exports = router;
 
 // Router for the home page
