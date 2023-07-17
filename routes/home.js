@@ -11,10 +11,6 @@ module.exports = router;
 router.get("/", (req, res) => {
   res.status(200).json("Working");
 });
-router.get("/", (req, res) => {
-  res.status(200).json("Working");
-});
-
 // Create a new task
 
 router.post("/", (req, res) => {});
