@@ -16,6 +16,11 @@ router.get("/", (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
+    const task = await new Task({
+      title: req.body.title,
+      date: req.body.date,
+      description: req.body.description,
+    });
   } catch (err) {}
 });
 
