@@ -8,4 +8,6 @@ const TaskSchema = mongoose.Schema({
   description: { type: String },
 });
 
+module.exports = mongoose.model("Task", TaskSchema);
+
 //Task terá titulo, horario e descriçao
