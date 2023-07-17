@@ -24,7 +24,9 @@ router.post("/", async (req, res) => {
     });
     await task.save();
     return res.status(200).json(user);
-  } catch (err) {}
+  } catch (err) {
+    return res.status(500).json(err);
+  }
 });
 
 // Update a task
