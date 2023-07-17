@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
       userID: req.body.userID,
     });
     await task.save();
-    return res.status(200).json(user);
+    return res.status(200).json(task);
   } catch (err) {
     return res.status(500).json(err);
   }
