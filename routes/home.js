@@ -59,4 +59,4 @@ router.put("/", async (req, res) => {
 
 // Delete a task
 
-router.delete("/", (req, res) => {});
+router.delete("/", async (req, res) => {});
