@@ -7,7 +7,7 @@ const verifyToken = require("../middleware/middleware");
 // Show the calendar
 router.get("/", verifyToken, async (req, res) => {
   try {
-    const id = req.body.userID;
+    const id = req.user.id;
     const user = await User.findById(id);
     if (!user) return res.status(500).json("User not found");
     const tasks = await Task.find({ userID: id });
