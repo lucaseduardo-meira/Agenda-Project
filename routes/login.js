@@ -26,7 +26,9 @@ router.post("/register", async (req, res) => {
       expiresIn: "1d",
     });
 
-    return res.status(200).json({ newUser, accessToken });
+    const { password, ...others } = newUser._doc;
+
+    return res.status(200).json({ others, accessToken });
   } catch (err) {
     return res.status(500).json(err);
   }
