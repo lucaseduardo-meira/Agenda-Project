@@ -1,9 +1,7 @@
 const router = require("express").Router();
-const task = require("../models/task");
 const Task = require("../models/task");
 const User = require("../models/user");
-
-module.exports = router;
+const jwt = require("jsonwebtoken");
 
 // Router for the home page
 // Show the calendar
