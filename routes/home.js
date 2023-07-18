@@ -3,7 +3,6 @@ const Task = require("../models/task");
 const User = require("../models/user");
 const verifyToken = require("../middleware/middleware");
 
-// Router for the home page
 // Show the calendar
 router.get("/", verifyToken, async (req, res) => {
   try {
