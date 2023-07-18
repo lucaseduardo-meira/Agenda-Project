@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const CryptoJS = require("crypto-js");
 const User = require("../models/user");
+const jwt = require("jsonwebtoken");
 
 router.get("/", (req, res) => {
   return res.status(200).json("Working");
@@ -8,19 +9,24 @@ router.get("/", (req, res) => {
 
 // CREATE A NEW USER
 router.post("/register", async (req, res) => {
-  try {
-    const pass = CryptoJS.AES.encrypt(
-      req.body.password,
-      process.env.PASS_SEC
-    ).toString();
+  const pass = CryptoJS.AES.encrypt(
+    req.body.password,
+    process.env.PASS_SEC
+  ).toString();
 
-    const user = await new User({
-      username: req.body.username,
-      password: pass,
-      email: req.body.email,
+  const user = new User({
+    username: req.body.username,
+    password: pass,
+    email: req.body.email,
+  });
+  try {
+    const newUser = await user.save();
+
+    const accessToken = jwt.sign({ id: newUser.id }, process.env.JWT_SEC, {
+      expiresIn: "1d",
     });
-    await user.save();
-    return res.status(200).json(user);
+
+    return res.status(200).json(newUser);
   } catch (err) {
     return res.status(500).json(err);
   }
