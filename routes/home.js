@@ -5,7 +5,7 @@ const verifyToken = require("../middleware/middleware");
 
 // Router for the home page
 // Show the calendar
-router.get("/", async (req, res) => {
+router.get("/", verifyToken, async (req, res) => {
   try {
     const id = req.body.userID;
     const user = await User.findById(id);
@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
 
 // Create a new task
 
-router.post("/", async (req, res) => {
+router.post("/", verifyToken, async (req, res) => {
   try {
     const id = req.body.userID;
     const user = await User.findById(id);
@@ -39,7 +39,7 @@ router.post("/", async (req, res) => {
 
 // Update a task
 
-router.put("/", async (req, res) => {
+router.put("/", verifyToken, async (req, res) => {
   try {
     const id = req.body.userID;
     const user = await User.findById(id);
@@ -57,7 +57,7 @@ router.put("/", async (req, res) => {
 
 // Delete a task
 
-router.delete("/", async (req, res) => {
+router.delete("/", verifyToken, async (req, res) => {
   try {
     const id = req.body.userID;
     const user = await User.findById(id);
