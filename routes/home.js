@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Task = require("../models/task");
 const User = require("../models/user");
-
+const verifyToken = require("../middleware/middleware");
 
 // Router for the home page
 // Show the calendar
