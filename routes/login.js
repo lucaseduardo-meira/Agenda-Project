@@ -48,7 +48,13 @@ router.post("/", async (req, res) => {
       return res.status(500).json("Wrong Password");
     }
 
-    return res.status(200).json(user);
+    const accessToken = jwt.sign({ id: user.id }, process.env.JWT_SEC, {
+      expiresIn: "1d",
+    });
+
+    const { password, ...others } = user._doc;
+
+    return res.status(200).json({ others, accessToken });
   } catch (err) {
     return res.status(500).json(err);
   }
