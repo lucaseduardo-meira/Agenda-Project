@@ -61,4 +61,3 @@ router.post("/", async (req, res) => {
 });
 
 module.exports = router;
-// Router to login and sign in
