@@ -67,4 +67,6 @@ body {
   color: black;
   font-size: 13pt;
   box-shadow: 0px 10px 40px #00000056;
+  box-sizing: border-box;
+  outline: none;
 }
