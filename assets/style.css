@@ -6,6 +6,7 @@ body {
   width: 100vw;
   height: 100vh;
   background: #121212;
+  background-image: linear-gradient(to top, #030303, #1b1b1b);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,4 +31,16 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.card-login {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px 35px;
+  background: #000;
+  border-radius: 20px;
+  box-shadow: 0px 10px 40px #00000056;
 }
