@@ -23,3 +23,11 @@ body {
 .left-login > h1 {
   color: #ffffff;
 }
+
+.right-login {
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
