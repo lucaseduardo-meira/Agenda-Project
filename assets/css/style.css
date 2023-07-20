@@ -91,7 +91,7 @@ body * {
 }
 
 .textfield > input::placeholder {
-  color: #e2e2e2;
+  color: #b8b8b8;
 }
 
 .btn-login {
