@@ -76,3 +76,7 @@ body {
   color: #121212;
   margin-bottom: 10px;
 }
+
+.textfield > input::placeholder {
+  color: #e2e2e2;
+}
