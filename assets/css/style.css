@@ -5,6 +5,10 @@ body {
   font-family: sans-serif;
 }
 
+body * {
+  box-sizing: border-box;
+}
+
 .main-login {
   width: 100vw;
   height: 100vh;
@@ -25,7 +29,12 @@ body {
 }
 
 .left-login > h1 {
-  color: #ffffff;
+  color: #33ff8f;
+  font-size: 3vw;
+}
+
+.left-login-image {
+  width: 30vw;
 }
 
 .right-login {
@@ -49,7 +58,7 @@ body {
 }
 
 .card-login > h1 {
-  color: white;
+  color: #33ff8f;
   font-weight: 800;
   margin: 0;
 }
@@ -95,8 +104,41 @@ body {
   text-transform: uppercase;
   font-weight: 800;
   letter-spacing: 3px;
-  background-color: #00ff73;
+  background-color: #33ff8f;
   color: #000;
   cursor: pointer;
-  box-shadow: 0px 10px 34px -20px #2aff8a;
+  box-shadow: 0px 10px 34px -20px #64ffaa;
+}
+
+@media only screen and (max-width: 950px) {
+  .card-login {
+    width: 85%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .main-login {
+    flex-direction: column;
+  }
+  .left-login > h1 {
+    display: none;
+  }
+
+  .left-login {
+    width: 100%;
+    height: auto;
+  }
+
+  .right-login {
+    width: 100%;
+    height: auto;
+  }
+
+  .left-login-image {
+    width: 50vw;
+  }
+
+  .card-login {
+    width: 90%;
+  }
 }
