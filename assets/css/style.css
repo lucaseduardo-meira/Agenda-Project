@@ -85,6 +85,12 @@ body * {
   outline: none;
 }
 
+.textfield > input:focus {
+  border: 2px solid #ffffff;
+  outline-offset: 0px;
+  outline: none;
+}
+
 .textfield > label {
   color: #ffffff;
   margin-bottom: 10px;
