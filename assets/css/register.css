@@ -21,10 +21,9 @@ body * {
 }
 
 .card-login {
-  width: 45%;
+  width: fit-content;
   height: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   padding: 30px 35px;
@@ -36,6 +35,7 @@ body * {
 .card-login > h1 {
   color: #33ff8f;
   font-weight: 700;
+  font-size: 22pt;
   margin: 0;
 }
 
@@ -43,13 +43,13 @@ body * {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   margin: 10px 0px;
 }
 
 .textfield > input {
-  width: 100%;
+  width: 70%;
   border: none;
   border-radius: 10px;
   padding: 15px;
@@ -68,6 +68,7 @@ body * {
 }
 
 .textfield > label {
+  align-items: start;
   color: #ffffff;
   margin-bottom: 10px;
 }
