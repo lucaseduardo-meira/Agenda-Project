@@ -17,6 +17,7 @@ body * {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .left-login {
@@ -30,11 +31,7 @@ body * {
 
 .left-login > h1 {
   color: #33ff8f;
-  font-size: 3vw;
-}
-
-.left-login-image {
-  width: 30vw;
+  font-size: 2vw;
 }
 
 .right-login {
