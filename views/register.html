@@ -4,36 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/register.css">
     <title>Register</title>
 </head>
 
 <body>
     <div class="main-login">
-        <div class="left-login">
-            <h1>Registre-se<br>E começe a planejar a sua agenda</h1>
+        <h2>Registre-se e começe a planejar a sua agenda</h2>
+        <div class="textfield">
+            <label for="usuario">Email</label>
+            <input type="text" name="email" placeholder="Email" onfocus="this.placeholder = ''" ,
+                onblur="this.placeholder = 'Digite seu Email'">
         </div>
-        <div class="right-login">
-            <div class="card-login">
-                <h1>REGISTER</h1>
-                <div class="textfield">
-                    <label for="usuario">Email</label>
-                    <input type="text" name="email" placeholder="Email" onfocus="this.placeholder = ''" ,
-                        onblur="this.placeholder = 'Digite seu Email'">
-                </div>
-                <div class="textfield">
-                    <label for="usuario">Usuário</label>
-                    <input type="text" name="usuario" placeholder="Usuário" onfocus="this.placeholder = ''" ,
-                        onblur="this.placeholder = 'Digite seu usuário'">
-                </div>
-                <div class="textfield">
-                    <label for="senha">Senha</label>
-                    <input type="password" name="senha" placeholder="Senha" onfocus="this.placeholder = ''" ,
-                        onblur="this.placeholder = 'Digite sua senha'">
-                </div>
-                <button class="btn-login">login</button>
-            </div>
+        <div class="textfield">
+            <label for="usuario">Usuário</label>
+            <input type="text" name="usuario" placeholder="Usuário" onfocus="this.placeholder = ''" ,
+                onblur="this.placeholder = 'Digite seu usuário'">
         </div>
+        <div class="textfield">
+            <label for="senha">Senha</label>
+            <input type="password" name="senha" placeholder="Senha" onfocus="this.placeholder = ''" ,
+                onblur="this.placeholder = 'Digite sua senha'">
+        </div>
+        <button class="btn-login">login</button>
+    </div>
+    </div>
 
 
     </div>
