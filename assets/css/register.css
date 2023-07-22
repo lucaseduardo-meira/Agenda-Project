@@ -19,32 +19,16 @@ body * {
   align-items: center;
 }
 
-.left-login {
-  width: 50vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
+/* 
 .left-login > h1 {
   color: #33ff8f;
   font-size: 3vw;
-}
-
-.right-login {
-  width: 50vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+} */
 
 .card-login {
-  width: 60%;
+  width: 40%;
+  height: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   padding: 30px 35px;
@@ -58,6 +42,10 @@ body * {
   font-weight: 800;
   margin: 0;
 }
+
+/* .form {
+  margin-top: 100px;
+} */
 
 .textfield {
   width: 100%;
@@ -97,11 +85,11 @@ body * {
 }
 
 .btn-login {
-  width: 100%;
+  width: 30%;
   padding: 16px 0px;
   margin: 25px;
   border: none;
-  border-radius: 8px;
+  border-radius: 50px;
   outline: none;
   text-transform: uppercase;
   font-weight: 800;
