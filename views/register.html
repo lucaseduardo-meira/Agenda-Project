@@ -15,43 +15,46 @@
     <!-- MAIN CONTAINER -->
     <div class="main-login">
         <!-- FOMR LOGIN-FORM -->
-        <div class="card-login">
-            <h1>Registre-se e começe a planejar a sua agenda</h1>
+        <form class="card-login">
+
+            <div class="form-header">
+                <h1>Registre-se e começe a planejar a sua agenda</h1>
+            </div>
+
+
             <!-- INPUTS -->
-            <form action="POST" class="form-login">
+            <div class="inputs">
                 <div class="textfield">
-                    <label for="usuario">Email</label>
-                    <div class="input-field">
-                        <input type="text" name="email" placeholder="Digite seu Email" onfocus="this.placeholder = ''" ,
-                            onblur="this.placeholder = 'Digite seu Email'">
-                    </div>
+                    <label for="usuario">Email
+                        <div class="input-field">
+                            <input type="text" name="email" placeholder="Digite seu Email"
+                                onfocus="this.placeholder = ''" , onblur="this.placeholder = 'Digite seu Email'">
+                        </div>
+                    </label>
                 </div>
                 <div class="textfield">
-                    <label for="usuario">Usuário</label>
-                    <div class="input-field">
-                        <input type="text" name="usuario" placeholder="Digite seu usuário"
-                            onfocus="this.placeholder = ''" , onblur="this.placeholder = 'Digite seu usuário'">
-                    </div>
+                    <label for="usuario">Usuário
+                        <div class="input-field">
+                            <input type="text" name="usuario" placeholder="Digite seu usuário"
+                                onfocus="this.placeholder = ''" , onblur="this.placeholder = 'Digite seu usuário'">
+                        </div>
 
-
+                    </label>
                 </div>
                 <div class="textfield">
-                    <label for="senha">Senha</label>
-                    <div class="input-field">
-                        <input type="password" name="senha" placeholder="Digite sua senha"
-                            onfocus="this.placeholder = ''" , onblur="this.placeholder = 'Digite sua senha'">
-                    </div>
-
+                    <label for="senha">Senha
+                        <div class="input-field">
+                            <input type="password" name="senha" placeholder="Digite sua senha"
+                                onfocus="this.placeholder = ''" , onblur="this.placeholder = 'Digite sua senha'">
+                        </div>
+                    </label>
                 </div>
-                <button type="submit" class="btn-login">login</button>
-            </form>
 
-        </div>
-    </div>
+            </div>
+            <button type="submit" class="btn-login">login</button>
+        </form>
     </div>
 
-
-    </div>
 </body>
 
 </html>
