@@ -7,54 +7,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../assets/css/register.css">
-    <title>Register</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <title>Login</title>
 </head>
 
 <body>
-    <!-- MAIN CONTAINER -->
     <div class="main-login">
-        <!-- FOMR LOGIN-FORM -->
-        <form class="card-login">
-
-            <div class="form-header">
-                <h1>Registre-se e começe a planejar a sua agenda</h1>
+        <div class="left-login">
+            <h1>Faça login<br>E planeje a sua agenda</h1>
+            <img src="../assets/img/schedule.svg" class="left-login-image" alt="Imagem de calendario">
+        </div>
+        <div class="right-login">
+            <div class="card-login">
+                <h1>LOGIN</h1>
+                <div class="textfield">
+                    <label for="usuario">Usuário</label>
+                    <input type="text" name="usuario" placeholder="Usuário" onfocus="this.placeholder = ''" ,
+                        onblur="this.placeholder = 'Digite seu usuário'">
+                </div>
+                <div class="textfield">
+                    <label for="senha">Senha</label>
+                    <input type="password" name="senha" placeholder="Senha" onfocus="this.placeholder = ''" ,
+                        onblur="this.placeholder = 'Digite sua senha'">
+                </div>
+                <button class="btn-login">login</button>
             </div>
+        </div>
 
 
-            <!-- INPUTS -->
-            <div class="inputs">
-                <div class="textfield">
-                    <label for="usuario">Email
-                        <div class="input-field">
-                            <input type="text" name="email" placeholder="Digite seu Email"
-                                onfocus="this.placeholder = ''" , onblur="this.placeholder = 'Digite seu Email'">
-                        </div>
-                    </label>
-                </div>
-                <div class="textfield">
-                    <label for="usuario">Usuário
-                        <div class="input-field">
-                            <input type="text" name="usuario" placeholder="Digite seu usuário"
-                                onfocus="this.placeholder = ''" , onblur="this.placeholder = 'Digite seu usuário'">
-                        </div>
-
-                    </label>
-                </div>
-                <div class="textfield">
-                    <label for="senha">Senha
-                        <div class="input-field">
-                            <input type="password" name="senha" placeholder="Digite sua senha"
-                                onfocus="this.placeholder = ''" , onblur="this.placeholder = 'Digite sua senha'">
-                        </div>
-                    </label>
-                </div>
-
-            </div>
-            <button type="submit" class="btn-login">login</button>
-        </form>
     </div>
-
 </body>
 
 </html>
