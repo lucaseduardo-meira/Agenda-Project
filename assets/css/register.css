@@ -26,8 +26,8 @@ body * {
 } */
 
 .card-login {
-  width: 40%;
-  height: 100%;
+  width: 30%;
+  height: 80%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -37,15 +37,11 @@ body * {
   box-shadow: 0px 10px 40px #00000056;
 }
 
-.card-login > h1 {
+.card-header > h1 {
   color: #33ff8f;
   font-weight: 800;
-  margin: 0;
+  margin-bottom: 30px;
 }
-
-/* .form {
-  margin-top: 100px;
-} */
 
 .textfield {
   width: 50%;
