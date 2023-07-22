@@ -21,12 +21,12 @@ body * {
 }
 
 .card-login {
-  width: fit-content;
   height: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 30px 35px;
+  padding: 30px 40px;
+  gap: 30px;
   background: #000;
   border-radius: 20px;
   box-shadow: 0px 10px 40px #00000056;
@@ -37,6 +37,10 @@ body * {
   font-weight: 700;
   font-size: 22pt;
   margin-top: 70px;
+}
+
+.form-login {
+  margin-top: 100px;
 }
 
 .textfield {
@@ -68,6 +72,7 @@ body * {
 }
 
 .textfield > label {
+  display: flex;
   align-items: start;
   color: #ffffff;
   margin-bottom: 10px;
