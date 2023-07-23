@@ -21,3 +21,5 @@ router.post("/login", loginController.login);
 
 router.get("/register", services.register);
 router.post("/register", loginController.createUser);
+
+module.exports = router;
