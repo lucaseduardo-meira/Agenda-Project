@@ -1,5 +1,5 @@
-const Task = require("../src/models/task");
-const User = require("../src/models/user");
+const Task = require("../models/task");
+const User = require("../models/user");
 
 module.exports = {
   // Show the calendar

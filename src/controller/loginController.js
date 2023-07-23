@@ -1,5 +1,5 @@
 const CryptoJS = require("crypto-js");
-const User = require("../src/models/user");
+const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 
 module.exports = {
