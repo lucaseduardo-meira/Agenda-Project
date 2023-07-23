@@ -45,9 +45,13 @@ body * {
 }
 
 hr {
+  border: none;
   margin-top: 30px;
   margin-bottom: 30px;
   width: 400px;
+  height: 1px;
+  color: #d6d6d6;
+  background-color: #d6d6d6;
 }
 
 .textfield {
@@ -101,7 +105,6 @@ hr {
   background-color: #33ff8f;
   color: #000;
   cursor: pointer;
-  box-shadow: 0px 10px 34px -20px #64ffaa;
 }
 
 @media only screen and (max-width: 950px) {
