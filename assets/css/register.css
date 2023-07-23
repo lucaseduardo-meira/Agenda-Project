@@ -107,6 +107,16 @@ hr {
   cursor: pointer;
 }
 
+.login {
+  color: white;
+  font-size: 14pt;
+  text-decoration: underline;
+}
+
+.login:hover {
+  color: #33ff8f;
+}
+
 @media only screen and (max-width: 950px) {
   .card-login {
     width: 85%;
