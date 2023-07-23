@@ -6,5 +6,13 @@ const verifyToken = require("../middleware/middleware");
 
 const services = require("../services/render");
 
-// Login
-router.get("/", services.login);
+// Index
+router.get("/", services.home);
+router.post("/", verifyToken, homeController.createTask);
+router.put("/", verifyToken, homeController.updateTask);
+router.delete("/", verifyToken, homeController.deleteTask);
+
+// Login page
+
+router.get("/login", services.login);
+router.post("/login", loginController.login);
