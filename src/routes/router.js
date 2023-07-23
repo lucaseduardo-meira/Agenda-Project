@@ -16,3 +16,8 @@ router.delete("/", verifyToken, homeController.deleteTask);
 
 router.get("/login", services.login);
 router.post("/login", loginController.login);
+
+// Register page
+
+router.get("/register", services.register);
+router.post("/register", loginController.createUser);
