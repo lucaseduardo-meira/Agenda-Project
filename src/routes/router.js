@@ -7,7 +7,7 @@ const verifyToken = require("../middleware/middleware");
 const services = require("../services/render");
 
 // Index
-router.get("/", services.home);
+router.get("/", verifyToken, services.home);
 router.post("/", verifyToken, homeController.createTask);
 router.put("/", verifyToken, homeController.updateTask);
 router.delete("/", verifyToken, homeController.deleteTask);
