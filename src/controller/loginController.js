@@ -50,7 +50,7 @@ module.exports = {
 
       const { password, ...others } = user._doc;
 
-      return res.status(200).json({ others, accessToken });
+      return res.redirect("/");
     } catch (err) {
       return res.status(500).json(err);
     }
