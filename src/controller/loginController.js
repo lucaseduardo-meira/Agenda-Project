@@ -50,7 +50,13 @@ module.exports = {
 
       const { password, ...others } = user._doc;
 
-      return res.redirect("/");
+      return res
+        .cookie("access_token", accessToken, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === "production",
+        })
+        .status(200)
+        .json({ message: "Loged in" });
     } catch (err) {
       return res.status(500).json(err);
     }
