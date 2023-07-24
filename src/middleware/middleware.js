@@ -15,4 +15,13 @@ const verifyToken = (req, res, next) => {
   }
 };
 
-module.exports = verifyToken;
+const logout = (req, res, next) => {
+  const token = req.cookies.access_token;
+  if (token) {
+    res.clearCookie("access_token").status(200);
+    console.log("logout");
+  }
+  return next();
+};
+
+module.exports = { verifyToken, logout };
