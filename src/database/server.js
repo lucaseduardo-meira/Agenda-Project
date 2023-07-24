@@ -1,10 +1,8 @@
 const mongoose = require("mongoose");
 
-mongo_uri = process.env.MONGO_URL || "mongodb://localhost/agenda";
-
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(mongo_uri);
+    const conn = await mongoose.connect(process.env.MONGO_URL);
   } catch (error) {
     console.log(error);
     process.exit(1);
