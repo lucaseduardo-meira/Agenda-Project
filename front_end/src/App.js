@@ -1,6 +1,9 @@
 import React from "react";
 import "./App.css";
 import { getMonth } from "./util";
+import CalendarHeader from "./components/CalendarHeader";
+import SideBar from "./components/SideBar";
+import Month from "./components/Month";
 
 function App() {
   console.table(getMonth());
