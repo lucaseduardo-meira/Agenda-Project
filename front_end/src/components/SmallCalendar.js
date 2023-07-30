@@ -39,6 +39,22 @@ export default function SmallCalendar() {
           </span>
         </button>
       </header>
+      <div className="grid grid-cols-7 grid-rows-6">
+        {currentMonth[0].map((day, i) => (
+          <span key={i} className="text-sm py-1 text-center">
+            {day.format("dd").charAt(0)}
+          </span>
+        ))}
+        {currentMonth.map((row, i) => (
+          <React.Fragment key={i}>
+            {row.map((day, idx) => (
+              <button key={idx} className={`py-1 w-full`}>
+                <span className="text-sm">{day.format("D")}</span>
+              </button>
+            ))}
+          </React.Fragment>
+        ))}
+      </div>
     </div>
   );
 }
