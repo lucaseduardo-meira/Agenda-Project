@@ -1,5 +1,6 @@
 import React from "react";
 import CreateEventButton from "./CreateEventButton";
+import SmallCalendar from "./SmallCalendar";
 
 export default function SideBar() {
   return (
