@@ -22,6 +22,16 @@ export default function SmallCalendar() {
   function handleNextMonth() {
     setCurrentMonthIdx(currentMonthIdx + 1);
   }
+  function getDayClass(day) {
+    const format = "DD-MM-YY";
+    const nowDay = dayjs().format(format);
+    const currDay = day.format(format);
+    if (nowDay === currDay) {
+      return "bg-blue-500 rounded-full text-white";
+    } else {
+      return "";
+    }
+  }
   return (
     <div className="mt-9">
       <header className="flex justify-between">
@@ -48,7 +58,7 @@ export default function SmallCalendar() {
         {currentMonth.map((row, i) => (
           <React.Fragment key={i}>
             {row.map((day, idx) => (
-              <button key={idx} className={`py-1 w-full`}>
+              <button key={idx} className={`py-1 w-full ${getDayClass}`}>
                 <span className="text-sm">{day.format("D")}</span>
               </button>
             ))}
