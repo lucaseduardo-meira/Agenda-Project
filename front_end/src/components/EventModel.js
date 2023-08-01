@@ -5,6 +5,7 @@ const labelsClasses = ["indigo", "gray", "green", "blue", "red", "purple"];
 export default function EventModel() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [selectedLabel, setSelectedLabel] = useState(labelsClasses[0]);
   const { setShowEventModel, daySelected } = useContext(GlobalContext);
   return (
     <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center">
@@ -57,11 +58,14 @@ export default function EventModel() {
               {labelsClasses.map((lblClass, i) => (
                 <span
                   key={i}
-                  className={`bg-${lblClass}-500 w-6 h-6 rounded-full flex items-center justify-center cursos-pointer`}
+                  onClick={() => setSelectedLabel(lblClass)}
+                  className={`bg-${lblClass}-500 w-6 h-6 rounded-full flex items-center justify-center cursor-pointer`}
                 >
-                  <span className="material-icons-outlined text-white text-sm">
-                    check
-                  </span>
+                  {selectedLabel === lblClass && (
+                    <span className="material-icons-outlined text-white text-sm">
+                      check
+                    </span>
+                  )}
                 </span>
               ))}
             </div>
