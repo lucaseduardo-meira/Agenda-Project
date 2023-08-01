@@ -9,13 +9,13 @@ import EventModel from "./components/EventModel";
 
 function App() {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
-  const { monthIndex } = useContext(GlobalContext);
+  const { monthIndex, showEventModel } = useContext(GlobalContext);
   useEffect(() => {
     setCurrentMonth(getMonth(monthIndex));
   }, [monthIndex]);
   return (
     <React.Fragment>
-      <EventModel />
+      {showEventModel && <EventModel />}
       <div className="h-screen flex flex-col">
         <CalendarHeader />
         <div className="flex flex-1">
