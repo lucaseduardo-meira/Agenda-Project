@@ -6,7 +6,21 @@ export default function EventModel() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [selectedLabel, setSelectedLabel] = useState(labelsClasses[0]);
-  const { setShowEventModel, daySelected } = useContext(GlobalContext);
+  const { setShowEventModel, daySelected, dispatchCallEvent } =
+    useContext(GlobalContext);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const calendarEvent = {
+      title,
+      description,
+      label: selectedLabel,
+      day: daySelected.valueOf(),
+      id: Date.now(),
+    };
+    dispatchCallEvent({ type: "push", payload: calendarEvent });
+    setShowEventModel(false);
+  }
   return (
     <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center">
       <form className="bg-white rounded-lg shadow-2xl w-1/4">
@@ -74,6 +88,7 @@ export default function EventModel() {
         <footer className="flex justify-end w-100 border-t p-3 mt-5">
           <button
             type="submit"
+            onClick={handleSubmit}
             className="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded text-white"
           >
             Save
