@@ -3,7 +3,7 @@ import GlobalContext from "../context/GlobalContext";
 
 export default function EventModel() {
   const [title, setTitle] = useState("");
-  const { setShowEventModel } = useContext(GlobalContext);
+  const { setShowEventModel, daySelected } = useContext(GlobalContext);
   return (
     <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center">
       <form className="bg-white rounded-lg shadow-2xl w-1/4">
@@ -30,6 +30,10 @@ export default function EventModel() {
                 setTitle(e.target.value);
               }}
             />
+            <span className="material-icons-outlined text-gray-400">
+              schedule
+            </span>
+            <p>{daySelected.format("dddd, MMMM DD")}</p>
           </div>
         </div>
       </form>
