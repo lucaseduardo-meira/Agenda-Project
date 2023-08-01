@@ -8,7 +8,8 @@ export default function Day({ day, rowIdx }) {
       ? "bg-blue-600 text-white rounded-full w-7"
       : "";
   }
-  const { setDaySelected, setShowEventModel } = useContext(GlobalContext);
+  const { setDaySelected, setShowEventModel, savedEvents } =
+    useContext(GlobalContext);
   return (
     <div className="border border-gray-200 flex flex-col">
       <header className="flex flex-col items-center">

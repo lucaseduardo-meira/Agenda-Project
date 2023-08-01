@@ -53,6 +53,7 @@ export default function ContextWrapper(props) {
         showEventModel,
         setShowEventModel,
         dispatchCallEvent,
+        savedEvents,
       }}
     >
       {props.children}
