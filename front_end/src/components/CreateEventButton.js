@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import plusImg from "../assets/plus.svg";
+import GlobalContext from "../context/GlobalContext";
 
 export default function CreateEventButton() {
+  const { setShowEventModel } = useContext(GlobalContext);
   return (
-    <button className="border p-2 rounded-full flex items-center shadow-md hover:shadow-2xl transition duration-150">
+    <button
+      onClick={() => setShowEventModel(true)}
+      className="border p-2 rounded-full flex items-center shadow-md hover:shadow-2xl transition duration-150"
+    >
       <img src={plusImg} alt="create_event" className="w-7 h-7" />
       <span className="pl-3 pr-7">Create</span>
     </button>
