@@ -8,6 +8,15 @@ import GlobalContext from "./context/GlobalContext";
 import EventModel from "./components/EventModel";
 
 function App() {
+  // const [backendData, setBackendData] = useState([{}]);
+  // useEffect(() => {
+  //   fetch("/")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setBackendData(data);
+  //     });
+  // }, []);
+
   const [currentMonth, setCurrentMonth] = useState(getMonth());
   const { monthIndex, showEventModel } = useContext(GlobalContext);
   useEffect(() => {
