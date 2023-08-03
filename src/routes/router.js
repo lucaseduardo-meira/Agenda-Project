@@ -7,8 +7,8 @@ const { verifyToken, logout } = require("../middleware/middleware");
 const services = require("../services/render");
 
 // Index
-router.get("/", verifyToken, homeController.showCalendar);
-router.post("/", verifyToken, homeController.createTask);
+router.get("/", homeController.showCalendar);
+router.post("/", homeController.createTask);
 router.put("/", verifyToken, homeController.updateTask);
 router.delete("/", verifyToken, homeController.deleteTask);
 

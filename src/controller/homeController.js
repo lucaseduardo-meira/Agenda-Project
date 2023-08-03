@@ -5,6 +5,7 @@ module.exports = {
   // Show the calendar
   async showCalendar(req, res) {
     try {
+      console.log(req.body);
       const id = req.user.id;
       const user = await User.findById(id);
       if (!user) return res.status(500).json("User not found");
@@ -19,6 +20,7 @@ module.exports = {
 
   async createTask(req, res) {
     try {
+      console.log(req.body);
       const id = req.body.userID;
       const user = await User.findById(id);
       if (!user) return res.status(500).json({ error: "User not found" });
@@ -29,7 +31,7 @@ module.exports = {
         userID: req.body.userID,
       });
       await task.save();
-      return res.status(200).json(task);
+      res.status(200).json(task);
     } catch (err) {
       return res.status(500).json(err);
     }
