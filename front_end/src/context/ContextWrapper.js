@@ -55,6 +55,10 @@ export default function ContextWrapper(props) {
       setMonthIndex(smallCalendarMonth);
     }
   }, [smallCalendarMonth]);
+
+  function updateLabel(label) {
+    setLabels(labels.map((lbl) => (lbl.label === label.label ? label : lbl)));
+  }
   return (
     <GlobalContext.Provider
       value={{
@@ -72,6 +76,7 @@ export default function ContextWrapper(props) {
         setSelectedEvent,
         setLabels,
         labels,
+        updateLabel,
       }}
     >
       {props.children}
