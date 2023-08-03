@@ -70,6 +70,8 @@ export default function ContextWrapper(props) {
         savedEvents,
         selectedEvent,
         setSelectedEvent,
+        setLabels,
+        labels,
       }}
     >
       {props.children}
