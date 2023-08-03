@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import axios from "axios";
 import GlobalContext from "../context/GlobalContext";
 const labelsClasses = ["indigo", "gray", "green", "blue", "red", "purple"];
 
@@ -23,12 +24,23 @@ export default function EventModel() {
       description,
       label: selectedLabel,
       day: daySelected.valueOf(),
-      id: selectedEvent ? selectedEvent.id : Date.now(),
     };
     if (selectedEvent) {
       dispatchCallEvent({ type: "update", payload: calendarEvent });
     } else {
-      dispatchCallEvent({ type: "push", payload: calendarEvent });
+      axios
+        .post("http://localhost:5000/", {
+          title,
+          description,
+          selectedLabel,
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      // dispatchCallEvent({ type: "push", payload: calendarEvent });
     }
     setShowEventModel(false);
   }
