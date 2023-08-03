@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useMemo, useReducer, useState } from "react";
 import GlobalContext from "./GlobalContext";
 import dayjs from "dayjs";
 
@@ -33,6 +33,14 @@ export default function ContextWrapper(props) {
     [],
     initEvents
   );
+  const filteredEvents = useMemo(() => {
+    return savedEvents.filter((evt) =>
+      labels
+        .filter((lbl) => lbl.checked)
+        .map((lbl) => lbl.label)
+        .includes(evt.label)
+    );
+  }, [savedEvents, labels]);
 
   useEffect(() => {
     localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
@@ -77,6 +85,7 @@ export default function ContextWrapper(props) {
         setLabels,
         labels,
         updateLabel,
+        filteredEvents,
       }}
     >
       {props.children}
