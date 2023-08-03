@@ -64,6 +64,12 @@ export default function ContextWrapper(props) {
     }
   }, [smallCalendarMonth]);
 
+  useEffect(() => {
+    if (!showEventModel) {
+      setSelectedEvent(null);
+    }
+  }, [showEventModel]);
+
   function updateLabel(label) {
     setLabels(labels.map((lbl) => (lbl.label === label.label ? label : lbl)));
   }
