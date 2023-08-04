@@ -2,10 +2,10 @@ import React, { useEffect, useMemo, useReducer, useState } from "react";
 import GlobalContext from "./GlobalContext";
 import dayjs from "dayjs";
 
-function savedEventsReducer(state, { type, payload }) {
+async function savedEventsReducer(state, { type, payload }) {
   switch (type) {
     case "push":
-      return [...state, payload];
+    // return [...state, payload];
     case "update":
       return state.map((evt) => (evt.id === payload.id ? payload : evt));
     case "delete":

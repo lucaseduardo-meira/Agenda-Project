@@ -17,22 +17,20 @@ export default function EventModel() {
       : labelsClasses[0]
   );
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     const calendarEvent = {
       title,
       description,
       label: selectedLabel,
-      day: daySelected.valueOf(),
+      date: daySelected,
     };
     if (selectedEvent) {
       dispatchCallEvent({ type: "update", payload: calendarEvent });
     } else {
-      axios
+      await axios
         .post("http://localhost:5000/", {
-          title,
-          description,
-          selectedLabel,
+          calendarEvent,
         })
         .then(function (response) {
           console.log(response);
