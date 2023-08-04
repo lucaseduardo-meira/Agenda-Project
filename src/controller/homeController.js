@@ -21,14 +21,15 @@ module.exports = {
   async createTask(req, res) {
     try {
       console.log(req.body);
-      const id = req.body.userID;
+      const id = req.user.id;
       const user = await User.findById(id);
       if (!user) return res.status(500).json({ error: "User not found" });
       const task = await new Task({
         title: req.body.title,
         date: req.body.date,
         description: req.body.description,
-        userID: req.body.userID,
+        label: req.body.label,
+        userID: id,
       });
       await task.save();
       res.status(200).json(task);
