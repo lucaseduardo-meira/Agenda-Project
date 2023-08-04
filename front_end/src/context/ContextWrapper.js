@@ -5,7 +5,7 @@ import dayjs from "dayjs";
 async function savedEventsReducer(state, { type, payload }) {
   switch (type) {
     case "push":
-    // return [...state, payload];
+      return [...state, payload];
     case "update":
       return state.map((evt) => (evt.id === payload.id ? payload : evt));
     case "delete":

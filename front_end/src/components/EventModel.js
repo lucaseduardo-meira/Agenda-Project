@@ -33,7 +33,7 @@ export default function EventModel() {
           calendarEvent,
         })
         .then(function (response) {
-          console.log(response);
+          return console.log(response);
         })
         .catch(function (error) {
           console.log(error);
