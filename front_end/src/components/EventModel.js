@@ -26,7 +26,17 @@ export default function EventModel() {
       date: daySelected,
     };
     if (selectedEvent) {
-      dispatchCallEvent({ type: "update", payload: calendarEvent });
+      await axios
+        .put("http://localhost:5000/", {
+          calendarEvent,
+        })
+        .then(function (response) {
+          return console.log(response.data);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      // dispatchCallEvent({ type: "update", payload: calendarEvent });
     } else {
       await axios
         .post("http://localhost:5000/", {
