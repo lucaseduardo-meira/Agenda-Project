@@ -3,17 +3,19 @@ import GlobalContext from "./GlobalContext";
 import dayjs from "dayjs";
 
 async function savedEventsReducer(state, { type, payload }) {
-  switch (type) {
-    // case "push":
-    //   return [...state, payload];
-    // case "update":
-    //   console.log(state);
-    //   return state.map((evt) => (evt.id === payload.id ? payload : evt));
-    case "delete":
-      return state.filter((evt) => evt.id !== payload.id);
+  switch (
+    type
+    //   case "push":
+    //     return [...state, payload];
+    //   case "update":
+    //     console.log(state);
+    //     return state.map((evt) => (evt.id === payload.id ? payload : evt));
+    //   case "delete":
+    //     return state.filter((evt) => evt.id !== payload.id);
 
-    default:
-      throw new Error();
+    //   default:
+    //     throw new Error();
+  ) {
   }
 }
 function initEvents() {
