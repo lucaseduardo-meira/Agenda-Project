@@ -32,7 +32,9 @@ module.exports = {
         userID: "64b458e0a396cdf48ccffe25",
       });
       await task.save();
-      return res.status(200).json(task);
+      const tasks = await Task.find({ userID: id });
+      return res.status(200).json(tasks);
+      // return res.status(200).json(task);
     } catch (err) {
       return res.status(500).json(err);
     }
@@ -52,8 +54,10 @@ module.exports = {
         { $set: event },
         { new: true }
       );
-      console.log(task);
-      return res.status(200).json(task);
+      const tasks = await Task.find({ userID: id });
+      return res.status(200).json(tasks);
+      // console.log(task);
+      // return res.status(200).json(task);
     } catch (err) {
       console.log(err);
       return res.status(500).json(err);
