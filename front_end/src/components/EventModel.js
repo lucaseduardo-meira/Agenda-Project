@@ -52,19 +52,19 @@ export default function EventModel() {
     }
     setShowEventModel(false);
   }
-  async function deleteTask(event) {
-    const id = event.id;
-    await axios
-      .delete("http://localhost:5000/", {
-        id,
-      })
-      .then(function (response) {
-        return console.log(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
+  // async function deleteTask(event) {
+  //   const id = event.id;
+  //   await axios
+  //     .delete("http://localhost:5000/", {
+  //       id,
+  //     })
+  //     .then(function (response) {
+  //       return console.log(response.data);
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // }
   return (
     <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center">
       <form className="bg-white rounded-lg shadow-2xl w-1/4">
@@ -75,7 +75,10 @@ export default function EventModel() {
           <div>
             {selectedEvent && (
               <span
-                onClick={deleteTask(selectedEvent)}
+                onClick={() => {
+                  dispatchCallEvent({ type: "delete", payload: selectedEvent });
+                  setShowEventModel(false);
+                }}
                 className="material-icons-outlined text-gray-400 cursor-poiter"
               >
                 delete
