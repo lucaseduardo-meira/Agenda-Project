@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import GlobalContext from "../context/GlobalContext";
 const labelsClasses = ["indigo", "gray", "green", "blue", "red", "purple"];
 
@@ -17,54 +17,22 @@ export default function EventModel() {
       : labelsClasses[0]
   );
 
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
     const calendarEvent = {
       title,
       description,
       label: selectedLabel,
-      date: daySelected,
+      day: daySelected,
     };
     if (selectedEvent) {
-      await axios
-        .put("http://localhost:5000/", {
-          calendarEvent,
-        })
-        .then(function (response) {
-          return console.log(response.data);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-      // dispatchCallEvent({ type: "update", payload: calendarEvent });
+      dispatchCallEvent({ type: "update", payload: calendarEvent });
     } else {
-      await axios
-        .post("http://localhost:5000/", {
-          calendarEvent,
-        })
-        .then(function (response) {
-          return console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-      // dispatchCallEvent({ type: "push", payload: calendarEvent });
+      dispatchCallEvent({ type: "push", payload: calendarEvent });
     }
     setShowEventModel(false);
   }
-  // async function deleteTask(event) {
-  //   const id = event.id;
-  //   await axios
-  //     .delete("http://localhost:5000/", {
-  //       id,
-  //     })
-  //     .then(function (response) {
-  //       return console.log(response.data);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // }
+
   return (
     <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center">
       <form className="bg-white rounded-lg shadow-2xl w-1/4">

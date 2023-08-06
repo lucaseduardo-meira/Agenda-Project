@@ -1,34 +1,80 @@
 import React, { useEffect, useMemo, useReducer, useState } from "react";
+import { useReducerAsync } from "use-reducer-async";
+import axios from "axios";
 import GlobalContext from "./GlobalContext";
 import dayjs from "dayjs";
 
-async function savedEventsReducer(state, { type, payload }) {
-  // switch (type) {
-  //   case "push":
-  //     return [...state, payload];
-  //   case "update":
-  //     return state.map((evt) => (evt.id === payload.id ? payload : evt));
-  //   case "delete":
-  //   // return state.filter((evt) => evt.id !== payload.id);
-  //   default:
-  //     throw new Error();
-  // }
+function savedEventsReducer(state, { type, payload }) {
+  switch (type) {
+    case "push":
+      return [...state, payload];
+    // await axios
+    //   .post("http://localhost:5000/", {
+    //     payload,
+    //   })
+    //   .then(function (response) {
+    //     console.log(response);
+    //     return [...state, payload];
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
+
+    case "update":
+      return state.map((evt) => (evt.id === payload.id ? payload : evt));
+    // await axios
+    //   .put("http://localhost:5000/", {
+    //     payload,
+    //   })
+    //   .then(function (response) {
+    //     console.log(response.data);
+    //     return state.map((evt) => (evt.id === payload.id ? payload : evt));
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
+
+    case "delete":
+      //       async function deleteTask(event) {
+      //   const id = event.id;
+      //   await axios
+      //     .delete("http://localhost:5000/", {
+      //       id,
+      //     })
+      //     .then(function (response) {
+      //       return console.log(response.data);
+      //     })
+      //     .catch(function (error) {
+      //       console.log(error);
+      //     });
+      // }
+      console.log(state.filter((evt) => evt.id !== payload.id));
+      return state.filter((evt) => evt.id !== payload.id);
+    default:
+      throw new Error();
+  }
 }
 
 function initEvents() {
+  // await axios
+  //   .get("http://localhost:5000/")
+  //   .then(function (response) {
+  //     console.log(response.data);
+  //     // return response.data;
+  //     const storageEvents = localStorage.getItem("savedEvents");
+  //     const parsedEvents = storageEvents ? JSON.parse(storageEvents) : [];
+  //     console.log(parsedEvents);
+  //     return parsedEvents;
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
+
   const storageEvents = localStorage.getItem("savedEvents");
   const parsedEvents = storageEvents ? JSON.parse(storageEvents) : [];
+  console.log(parsedEvents);
   return parsedEvents;
 }
-// await axios
-//   .get("http://localhost:5000/")
-//   .then(function (response) {
-//     const parsedEvents = response.data;
-//     return parsedEvents;
-//   })
-//   .catch(function (error) {
-//     console.log(error);
-//   });
 
 export default function ContextWrapper(props) {
   const [monthIndex, setMonthIndex] = useState(dayjs().month());
@@ -42,14 +88,15 @@ export default function ContextWrapper(props) {
     [],
     initEvents
   );
-  const filteredEvents = useMemo(() => {
-    return savedEvents.filter((evt) =>
-      labels
-        .filter((lbl) => lbl.checked)
-        .map((lbl) => lbl.label)
-        .includes(evt.label)
-    );
-  }, [savedEvents, labels]);
+  // const filteredEvents = useMemo(() => {
+  //   console.log(savedEvents);
+  //   return savedEvents.filter((evt) =>
+  //     labels
+  //       .filter((lbl) => lbl.checked)
+  //       .map((lbl) => lbl.label)
+  //       .includes(evt.label)
+  //   );
+  // }, [savedEvents, labels]);
 
   useEffect(() => {
     localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
@@ -100,7 +147,7 @@ export default function ContextWrapper(props) {
         setLabels,
         labels,
         updateLabel,
-        filteredEvents,
+        // filteredEvents,
       }}
     >
       {props.children}
