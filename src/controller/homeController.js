@@ -5,8 +5,7 @@ module.exports = {
   // Show the calendar
   async showCalendar(req, res) {
     try {
-      console.log(req.body);
-      const id = req.user.id;
+      const id = "64b458e0a396cdf48ccffe25";
       const user = await User.findById(id);
       if (!user) return res.status(500).json("User not found");
       const tasks = await Task.find({ userID: id });
