@@ -29,8 +29,8 @@ import dayjs from "dayjs";
 function savedEventsReducer(state, { type, payload }) {
   switch (type) {
     case "push":
-      console.log(payload);
       return [...state, payload];
+
     // await axios
     //   .post("http://localhost:5000/", {
     //     payload,
@@ -113,12 +113,12 @@ export default function ContextWrapper(props) {
   useEffect(() => {
     const fetchData = async () => {
       await axios.get("http://localhost:5000/").then(function (response) {
-        console.log(response.data);
         dispatchCallEvent({ type: "push", payload: response.data });
       });
     };
     fetchData();
   }, []);
+
   // const filteredEvents = useMemo(() => {
   //   console.log(savedEvents);
   //   return savedEvents.filter((evt) =>
