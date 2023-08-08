@@ -3,29 +3,6 @@ import axios from "axios";
 import GlobalContext from "./GlobalContext";
 import dayjs from "dayjs";
 
-// async function fetchData() {
-//   try {
-//     await axios
-//       .get("http://localhost:5000/")
-//       .then(async function (response) {
-//         const events = await response.data;
-//         return events;
-//         // console.log(response.data);
-//         // const parsedEvents = response.data;
-//         // return parsedEvents;
-//         // return response.data;
-//         // const storageEvents = localStorage.getItem("savedEvents");
-//         // const parsedEvents = storageEvents ? JSON.parse(storageEvents) : [];
-//         // console.log(parsedEvents);
-//       })
-//       .catch(function (error) {
-//         console.log(error);
-//       });
-//   } catch (error) {
-//     console.log("error", error);
-//   }
-// }
-
 function savedEventsReducer(state, { type, payload }) {
   switch (type) {
     case "push":
@@ -79,20 +56,6 @@ function savedEventsReducer(state, { type, payload }) {
 }
 
 function initEvents() {
-  // await axios
-  //   .get("http://localhost:5000/")
-  //   .then(function (response) {
-  //     console.log(response.data);
-  //     // const parsedEvents = response.data;
-  //     // return parsedEvents;
-  //     // return response.data;
-  //     const storageEvents = localStorage.getItem("savedEvents");
-  //     const parsedEvents = storageEvents ? JSON.parse(storageEvents) : [];
-  //     console.log(parsedEvents);
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });
   const storageEvents = localStorage.getItem("savedEvents");
   const parsedEvents = storageEvents ? JSON.parse(storageEvents) : [];
   return parsedEvents;
