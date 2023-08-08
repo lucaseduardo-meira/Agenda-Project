@@ -1,12 +1,35 @@
 import React, { useEffect, useMemo, useReducer, useState } from "react";
-import { useReducerAsync } from "use-reducer-async";
 import axios from "axios";
 import GlobalContext from "./GlobalContext";
 import dayjs from "dayjs";
 
+// async function fetchData() {
+//   try {
+//     await axios
+//       .get("http://localhost:5000/")
+//       .then(async function (response) {
+//         const events = await response.data;
+//         return events;
+//         // console.log(response.data);
+//         // const parsedEvents = response.data;
+//         // return parsedEvents;
+//         // return response.data;
+//         // const storageEvents = localStorage.getItem("savedEvents");
+//         // const parsedEvents = storageEvents ? JSON.parse(storageEvents) : [];
+//         // console.log(parsedEvents);
+//       })
+//       .catch(function (error) {
+//         console.log(error);
+//       });
+//   } catch (error) {
+//     console.log("error", error);
+//   }
+// }
+
 function savedEventsReducer(state, { type, payload }) {
   switch (type) {
     case "push":
+      console.log(payload);
       return [...state, payload];
     // await axios
     //   .post("http://localhost:5000/", {
@@ -60,19 +83,18 @@ function initEvents() {
   //   .get("http://localhost:5000/")
   //   .then(function (response) {
   //     console.log(response.data);
+  //     // const parsedEvents = response.data;
+  //     // return parsedEvents;
   //     // return response.data;
   //     const storageEvents = localStorage.getItem("savedEvents");
   //     const parsedEvents = storageEvents ? JSON.parse(storageEvents) : [];
   //     console.log(parsedEvents);
-  //     return parsedEvents;
   //   })
   //   .catch(function (error) {
   //     console.log(error);
   //   });
-
   const storageEvents = localStorage.getItem("savedEvents");
   const parsedEvents = storageEvents ? JSON.parse(storageEvents) : [];
-  console.log(parsedEvents);
   return parsedEvents;
 }
 
@@ -88,6 +110,15 @@ export default function ContextWrapper(props) {
     [],
     initEvents
   );
+  useEffect(() => {
+    const fetchData = async () => {
+      await axios.get("http://localhost:5000/").then(function (response) {
+        console.log(response.data);
+        dispatchCallEvent({ type: "push", payload: response.data });
+      });
+    };
+    fetchData();
+  }, []);
   // const filteredEvents = useMemo(() => {
   //   console.log(savedEvents);
   //   return savedEvents.filter((evt) =>
