@@ -5,6 +5,14 @@ import dayjs from "dayjs";
 
 function savedEventsReducer(state, { type, payload }) {
   switch (type) {
+    case "start":
+      // console.log(state.length);
+      if (state.length === 0) {
+        return payload;
+      } else {
+        return state;
+      }
+
     case "push":
       return [...state, payload];
 
@@ -76,7 +84,7 @@ export default function ContextWrapper(props) {
   useEffect(() => {
     const fetchData = async () => {
       await axios.get("http://localhost:5000/").then(function (response) {
-        dispatchCallEvent({ type: "push", payload: response.data });
+        dispatchCallEvent({ type: "start", payload: response.data });
       });
     };
     fetchData();
