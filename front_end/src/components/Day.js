@@ -13,7 +13,7 @@ export default function Day({ day, rowIdx }) {
   } = useContext(GlobalContext);
   useEffect(() => {
     const events = savedEvents.filter(
-      (evt) => dayjs(evt.day).format("DD-MM-YY") === day.format("DD-MM-YY")
+      (evt) => dayjs(evt.date).format("DD-MM-YY") === day.format("DD-MM-YY")
     );
     setDayEvents(events);
   }, [savedEvents, day]);
