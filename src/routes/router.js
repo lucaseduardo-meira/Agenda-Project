@@ -8,7 +8,7 @@ const services = require("../services/render");
 
 // Index
 router.get("/", homeController.showCalendar);
-router.post("/", verifyToken, homeController.createTask);
+router.post("/", homeController.createTask);
 router.put("/", homeController.updateTask);
 router.delete("/", verifyToken, homeController.deleteTask);
 
