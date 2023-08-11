@@ -19,7 +19,7 @@ module.exports = {
 
   async createTask(req, res) {
     try {
-      const event = req.body.calendarEvent;
+      const event = req.body.task;
       const id = "64b458e0a396cdf48ccffe25";
       const user = await User.findById(id);
       if (!user) return res.status(500).json({ error: "User not found" });
@@ -31,10 +31,12 @@ module.exports = {
         userID: "64b458e0a396cdf48ccffe25",
       });
       await task.save();
-      const tasks = await Task.find({ userID: id });
-      return res.status(200).json(tasks);
+      console.log(task);
+      // const tasks = await Task.find({ userID: id });
+      return res.status(200).json(task);
       // return res.status(200).json(task);
     } catch (err) {
+      console.log(err);
       return res.status(500).json(err);
     }
   },
