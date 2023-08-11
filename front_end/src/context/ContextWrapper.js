@@ -6,7 +6,6 @@ import dayjs from "dayjs";
 function savedEventsReducer(state, { type, payload }) {
   switch (type) {
     case "start":
-      // console.log(state.length);
       if (state.length === 0) {
         return payload;
       } else {
@@ -14,19 +13,21 @@ function savedEventsReducer(state, { type, payload }) {
       }
 
     case "push":
+      async function pushEvent(task) {
+        await axios
+          .post("http://localhost:5000/", {
+            task,
+          })
+          .then(function (response) {
+            const addedTask = response.data;
+            return addedTask;
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+      pushEvent(payload);
       return [...state, payload];
-
-    // await axios
-    //   .post("http://localhost:5000/", {
-    //     payload,
-    //   })
-    //   .then(function (response) {
-    //     console.log(response);
-    //     return [...state, payload];
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
 
     case "update":
       return state.map((evt) => (evt.id === payload.id ? payload : evt));
