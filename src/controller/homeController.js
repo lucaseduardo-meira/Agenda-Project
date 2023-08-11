@@ -31,12 +31,8 @@ module.exports = {
         userID: "64b458e0a396cdf48ccffe25",
       });
       await task.save();
-      console.log(task);
-      // const tasks = await Task.find({ userID: id });
       return res.status(200).json(task);
-      // return res.status(200).json(task);
     } catch (err) {
-      console.log(err);
       return res.status(500).json(err);
     }
   },
