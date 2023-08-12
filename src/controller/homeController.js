@@ -61,10 +61,12 @@ module.exports = {
 
   async deleteTask(req, res) {
     try {
-      const id = req.body.userID;
+      const id = "64b458e0a396cdf48ccffe25";
+      const event = req.body._id;
       const user = await User.findById(id);
       if (!user) return res.status(500).json({ error: "User not found" });
-      const task = await Task.findByIdAndDelete(req.body.id);
+      const task = await Task.findByIdAndDelete(event);
+      console.log(task);
       return res.status(200).json(task);
     } catch (err) {
       res.status(500).json(err);
