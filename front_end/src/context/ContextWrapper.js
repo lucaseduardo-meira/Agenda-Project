@@ -6,11 +6,7 @@ import dayjs from "dayjs";
 function savedEventsReducer(state, { type, payload }) {
   switch (type) {
     case "start":
-      if (state.length === 0) {
-        return payload;
-      } else {
-        return state;
-      }
+      return payload;
 
     case "push":
       async function pushEvent(task) {
@@ -40,6 +36,7 @@ function savedEventsReducer(state, { type, payload }) {
 
     case "delete":
       async function deleteTask(task) {
+        console.log(task);
         await axios
           .delete("http://localhost:5000/", {
             data: task,
@@ -80,17 +77,17 @@ export default function ContextWrapper(props) {
       });
     };
     fetchData();
-  }, []);
+  }, [savedEvents]);
 
-  // const filteredEvents = useMemo(() => {
-  //   console.log(savedEvents);
-  //   return savedEvents.filter((evt) =>
-  //     labels
-  //       .filter((lbl) => lbl.checked)
-  //       .map((lbl) => lbl.label)
-  //       .includes(evt.label)
-  //   );
-  // }, [savedEvents, labels]);
+  const filteredEvents = useMemo(() => {
+    // console.log(savedEvents);
+    return savedEvents.filter((evt) =>
+      labels
+        .filter((lbl) => lbl.checked)
+        .map((lbl) => lbl.label)
+        .includes(evt.label)
+    );
+  }, [savedEvents, labels]);
 
   useEffect(() => {
     localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
@@ -141,7 +138,7 @@ export default function ContextWrapper(props) {
         setLabels,
         labels,
         updateLabel,
-        // filteredEvents,
+        filteredEvents,
       }}
     >
       {props.children}
