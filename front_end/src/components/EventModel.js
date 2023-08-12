@@ -24,6 +24,7 @@ export default function EventModel() {
       description,
       label: selectedLabel,
       date: daySelected,
+      id: selectedEvent ? selectedEvent._id : null,
     };
     if (selectedEvent) {
       dispatchCallEvent({ type: "update", payload: calendarEvent });
@@ -39,7 +40,9 @@ export default function EventModel() {
       //   .catch(function (error) {
       //     console.log(error);
       //   });
-
+      if (calendarEvent.id === null) {
+        delete calendarEvent.id;
+      }
       dispatchCallEvent({ type: "push", payload: calendarEvent });
     }
     setShowEventModel(false);
