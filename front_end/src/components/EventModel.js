@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import axios from "axios";
 import GlobalContext from "../context/GlobalContext";
 const labelsClasses = ["indigo", "gray", "green", "blue", "red", "purple"];
 
@@ -29,17 +28,6 @@ export default function EventModel() {
     if (selectedEvent) {
       dispatchCallEvent({ type: "update", payload: calendarEvent });
     } else {
-      // console.log(calendarEvent);
-      // await axios
-      //   .post("http://localhost:5000/", {
-      //     calendarEvent,
-      //   })
-      //   .then(function (response) {
-      //     console.log(response.data);
-      //   })
-      //   .catch(function (error) {
-      //     console.log(error);
-      //   });
       if (calendarEvent.id === null) {
         delete calendarEvent.id;
       }
@@ -62,7 +50,7 @@ export default function EventModel() {
                   dispatchCallEvent({ type: "delete", payload: selectedEvent });
                   setShowEventModel(false);
                 }}
-                className="material-icons-outlined text-gray-400 cursor-poiter"
+                className="material-icons-outlined text-gray-400 cursor-pointer"
               >
                 delete
               </span>
