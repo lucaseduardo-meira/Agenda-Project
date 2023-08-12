@@ -10,7 +10,7 @@ const services = require("../services/render");
 router.get("/", homeController.showCalendar);
 router.post("/", homeController.createTask);
 router.put("/", homeController.updateTask);
-router.delete("/", verifyToken, homeController.deleteTask);
+router.delete("/", homeController.deleteTask);
 
 // Login page
 
