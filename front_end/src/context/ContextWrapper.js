@@ -40,21 +40,21 @@ function savedEventsReducer(state, { type, payload }) {
       return state.map((evt) => (evt._id === payload.id ? payload : evt));
 
     case "delete":
-      //       async function deleteTask(event) {
-      //   const id = event.id;
-      //   await axios
-      //     .delete("http://localhost:5000/", {
-      //       id,
-      //     })
-      //     .then(function (response) {
-      //       return console.log(response.data);
-      //     })
-      //     .catch(function (error) {
-      //       console.log(error);
-      //     });
-      // }
-      console.log(state.filter((evt) => evt.id !== payload.id));
-      return state.filter((evt) => evt.id !== payload.id);
+      async function deleteTask(task) {
+        await axios
+          .delete("http://localhost:5000/", {
+            data: task,
+          })
+          .then(function (response) {
+            console.log(response.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+      // console.log(payload);
+      deleteTask(payload);
+      return state.filter((evt) => evt._id !== payload._id);
     default:
       throw new Error();
   }
