@@ -66,7 +66,6 @@ module.exports = {
       const user = await User.findById(id);
       if (!user) return res.status(500).json({ error: "User not found" });
       const task = await Task.findByIdAndDelete(event);
-      console.log(task);
       return res.status(200).json(task);
     } catch (err) {
       res.status(500).json(err);
