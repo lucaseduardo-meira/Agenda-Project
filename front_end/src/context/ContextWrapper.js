@@ -18,10 +18,6 @@ function savedEventsReducer(state, { type, payload }) {
           .post("http://localhost:5000/", {
             task,
           })
-          .then(function (response) {
-            const addedTask = response.data;
-            return addedTask;
-          })
           .catch(function (error) {
             console.log(error);
           });
@@ -41,7 +37,6 @@ function savedEventsReducer(state, { type, payload }) {
       }
       // console.log(payload);
       updateEvent(payload);
-      console.log(state.map((evt) => (evt.id === payload.id ? payload : evt)));
       return state.map((evt) => (evt._id === payload.id ? payload : evt));
 
     case "delete":
