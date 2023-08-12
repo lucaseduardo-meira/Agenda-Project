@@ -7,16 +7,15 @@ export default function Day({ day, rowIdx }) {
   const {
     setDaySelected,
     setShowEventModel,
-    // filteredEvents,
-    savedEvents,
+    filteredEvents,
     setSelectedEvent,
   } = useContext(GlobalContext);
   useEffect(() => {
-    const events = savedEvents.filter(
+    const events = filteredEvents.filter(
       (evt) => dayjs(evt.date).format("DD-MM-YY") === day.format("DD-MM-YY")
     );
     setDayEvents(events);
-  }, [savedEvents, day]);
+  }, [filteredEvents, day]);
 
   function getCurrentDayClass() {
     return day.format("DD-MM-YY") === dayjs().format("DD-MM-YY")
