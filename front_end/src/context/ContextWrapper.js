@@ -35,7 +35,6 @@ function savedEventsReducer(state, { type, payload }) {
             console.log(error);
           });
       }
-      // console.log(payload);
       updateEvent(payload);
       return state.map((evt) => (evt._id === payload.id ? payload : evt));
 
@@ -45,14 +44,10 @@ function savedEventsReducer(state, { type, payload }) {
           .delete("http://localhost:5000/", {
             data: task,
           })
-          .then(function (response) {
-            console.log(response.data);
-          })
           .catch(function (error) {
             console.log(error);
           });
       }
-      // console.log(payload);
       deleteTask(payload);
       return state.filter((evt) => evt._id !== payload._id);
     default:
