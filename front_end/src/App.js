@@ -1,29 +1,24 @@
-import React, { useState, useContext, useEffect } from "react";
-import "./App.css";
-import { getMonth } from "./util";
-import CalendarHeader from "./components/CalendarHeader";
-import SideBar from "./components/SideBar";
-import Month from "./components/Month";
-import GlobalContext from "./context/GlobalContext";
-import EventModel from "./components/EventModel";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+import Home from "./router/Home";
+import Login from "./router/Login";
+import Register from "./router/Register";
 
 function App() {
-  const [currentMonth, setCurrentMonth] = useState(getMonth());
-  const { monthIndex, showEventModel } = useContext(GlobalContext);
-  useEffect(() => {
-    setCurrentMonth(getMonth(monthIndex));
-  }, [monthIndex]);
   return (
-    <React.Fragment>
-      {showEventModel && <EventModel />}
-      <div className="h-screen flex flex-col">
-        <CalendarHeader />
-        <div className="flex flex-1">
-          <SideBar />
-          <Month month={currentMonth} />
-        </div>
-      </div>
-    </React.Fragment>
+    <Router>
+      <Switch>
+        <Router exact path="/">
+          <Home />
+        </Router>
+        <Router path="/login">
+          <Login />
+        </Router>
+        <Router path="/register">
+          <Register />
+        </Router>
+      </Switch>
+    </Router>
   );
 }
 
