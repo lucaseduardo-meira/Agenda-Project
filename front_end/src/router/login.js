@@ -3,48 +3,50 @@ import "../assets/css/login.css";
 
 function Login() {
   return (
-    <div class="main-login">
-      <div class="left-login">
+    <div className="main-login">
+      <div className="left-login">
         <h1>
           Faça login
           <br />E planeje a sua agenda
         </h1>
         <img
-          src="img/schedule.svg"
-          class="left-login-image"
+          src="../assets/img/schedule.svg"
+          className="left-login-image"
           alt="Imagem de calendario"
         />
       </div>
-      <div class="right-login">
-        <form action="/login" method="post" class="card-login">
+      <div className="right-login">
+        <form action="/login" method="post" className="card-login">
           <h1>LOGIN</h1>
           <hr />
-          <div class="textfield">
-            <label for="usernam">Usuário</label>
+          <div className="textfield">
+            <label htmlFor="username">Usuário</label>
             <input
               type="text"
               name="username"
               placeholder="Digite seu usuário"
-              onfocus="this.placeholder = ''"
-              onblur="this.placeholder = 'Digite seu usuário'"
+              // onFocus="this.placeholder = ''"
+              onFocus={(e) => (e.target.placeholder = "")}
+              onBlur={(e) => (e.target.placeholder = "Digite seu usuário")}
+              // onBlur="this.placeholder = 'Digite seu usuário'"
             />
           </div>
-          <div class="textfield">
-            <label for="password">Senha</label>
+          <div className="textfield">
+            <label htmlFor="password">Senha</label>
             <input
               type="password"
               name="password"
               placeholder="Digite sua senha"
-              onfocus="this.placeholder = ''"
-              onblur="this.placeholder = 'Digite sua senha'"
+              onFocus={(e) => (e.target.placeholder = "")}
+              onBlur={(e) => (e.target.placeholder = "Digite sua senha")}
             />
           </div>
-          <button type="submit" class="btn-login">
+          <button type="submit" className="btn-login">
             login
           </button>
           <hr />
-          <a href="/register" class="register">
-            Cadastre-se <i class="fas fa-angle-double-right"></i>
+          <a href="/register" className="register">
+            Cadastre-se <i className="fas fa-angle-double-right"></i>
           </a>
         </form>
       </div>
