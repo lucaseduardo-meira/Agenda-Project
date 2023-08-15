@@ -9,7 +9,7 @@ body * {
   box-sizing: border-box;
 }
 
-.main-login {
+.main-register {
   width: 100vw;
   height: 100vh;
   background: #121212;
@@ -20,12 +20,13 @@ body * {
 }
 
 /* 
-.left-login > h1 {
+.left-register
+ > h1 {
   color: #33ff8f;
   font-size: 3vw;
 } */
 
-.card-login {
+.card-register {
   width: 30%;
   height: 80%;
   display: flex;
@@ -59,7 +60,7 @@ hr {
   margin-top: 10px;
 }
 
-.textfield {
+.textfield-register {
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -68,7 +69,7 @@ hr {
   margin: 10px 0px;
 }
 
-.textfield > input {
+.textfield-register > input {
   width: 100%;
   border: none;
   border-radius: 10px;
@@ -81,22 +82,22 @@ hr {
   outline: none;
 }
 
-.textfield > input:focus {
+.textfield-register > input:focus {
   border: 2px solid #ffffff;
   outline-offset: 0px;
   outline: none;
 }
 
-.textfield > label {
+.textfield-register > label {
   color: #ffffff;
   margin-bottom: 10px;
 }
 
-.textfield > input::placeholder {
+.textfield-register > input::placeholder {
   color: #b8b8b8;
 }
 
-.btn-login {
+.btn-register {
   width: 40%;
   padding: 16px 0px;
   margin: 25px;
@@ -112,45 +113,45 @@ hr {
   cursor: pointer;
 }
 
-.login {
+.login-register {
   color: white;
   font-size: 14pt;
   text-decoration: underline;
 }
 
-.login:hover {
+.login-register :hover {
   color: #33ff8f;
 }
 
 @media only screen and (max-width: 950px) {
-  .card-login {
+  .card-register {
     width: 85%;
   }
 }
 
 @media only screen and (max-width: 600px) {
-  .main-login {
+  .main-register {
     flex-direction: column;
   }
-  .left-login > h1 {
+  .left-register > h1 {
     display: none;
   }
 
-  .left-login {
+  .left-register {
     width: 100%;
     height: auto;
   }
 
-  .right-login {
+  .right-register {
     width: 100%;
     height: auto;
   }
 
-  .left-login-image {
+  .left-register -image {
     width: 50vw;
   }
 
-  .card-login {
+  .card-register {
     width: 90%;
   }
 }
