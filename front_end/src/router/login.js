@@ -1,5 +1,5 @@
 import React from "react";
-import "../assets/css/login.css";
+import "../assets/css/styles.css";
 
 function Login() {
   return (
@@ -19,7 +19,7 @@ function Login() {
         <form action="/login" method="post" className="card-login">
           <h1>LOGIN</h1>
           <hr />
-          <div className="textfield">
+          <div className="textfield-login">
             <label htmlFor="username">Usuário</label>
             <input
               type="text"
@@ -31,7 +31,7 @@ function Login() {
               // onBlur="this.placeholder = 'Digite seu usuário'"
             />
           </div>
-          <div className="textfield">
+          <div className="textfield-login">
             <label htmlFor="password">Senha</label>
             <input
               type="password"
@@ -45,7 +45,7 @@ function Login() {
             login
           </button>
           <hr />
-          <a href="/register" className="register">
+          <a href="/register" className="register-login">
             Cadastre-se <i className="fas fa-angle-double-right"></i>
           </a>
         </form>
