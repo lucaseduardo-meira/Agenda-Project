@@ -1,5 +1,6 @@
 import React from "react";
 import "../assets/css/styles.css";
+import Schedule from "../assets/img/schedule.svg";
 
 function Login() {
   return (
@@ -10,7 +11,7 @@ function Login() {
           <br />E planeje a sua agenda
         </h1>
         <img
-          src="../assets/img/schedule.svg"
+          src={Schedule}
           className="left-login-image"
           alt="Imagem de calendario"
         />
