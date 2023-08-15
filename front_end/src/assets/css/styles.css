@@ -286,7 +286,7 @@ h1 {
   text-decoration: underline;
 }
 
-.login-register :hover {
+.login-register:hover {
   color: #33ff8f;
 }
 
