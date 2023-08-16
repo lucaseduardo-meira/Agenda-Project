@@ -18,10 +18,7 @@ function Register() {
             name="username"
             placeholder="Usuário"
             onFocus={(e) => (e.target.placeholder = "")}
-            onBlur={(e) => (
-              (e.target.placeholder = "Digite seu usuário"),
-              (e.target.color = "#ff0000")
-            )}
+            onBlur={(e) => (e.target.placeholder = "Digite seu usuário")}
           />
         </div>
         <div className="textfield-register">
