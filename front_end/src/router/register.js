@@ -3,49 +3,52 @@ import "../assets/css/styles.css";
 
 function Register() {
   return (
-    <div class="main-register">
-      <form action="/register" method="post" class="card-register">
-        <div class="card-header">
+    <div className="main-register">
+      <form action="/register" method="post" className="card-register">
+        <div className="card-header">
           <h1>
             Inscreva-se <br />e planeje a sua agenda
           </h1>
         </div>
-        <hr class="hr1" />
-        <div class="textfield-register">
-          <label for="username">Usuário</label>
+        <hr className="hr1" />
+        <div className="textfield-register">
+          <label htmlFor="username">Usuário</label>
           <input
             type="text"
             name="username"
             placeholder="Usuário"
-            onfocus="this.placeholder = ''"
-            onblur="this.placeholder = 'Digite seu usuário'"
+            onFocus={(e) => (e.target.placeholder = "")}
+            onBlur={(e) => (
+              (e.target.placeholder = "Digite seu usuário"),
+              (e.target.color = "#ff0000")
+            )}
           />
         </div>
-        <div class="textfield-register">
-          <label for="email">Email</label>
+        <div className="textfield-register">
+          <label htmlFor="email">Email</label>
           <input
             type="text"
             name="email"
             placeholder="Email"
-            onfocus="this.placeholder = ''"
-            onblur="this.placeholder = 'Digite seu Email'"
+            onFocus={(e) => (e.target.placeholder = "")}
+            onBlur={(e) => (e.target.placeholder = "Digite seu Email")}
           />
         </div>
-        <div class="textfield-register">
-          <label for="password">Senha</label>
+        <div className="textfield-register">
+          <label htmlFor="password">Senha</label>
           <input
             type="password"
             name="password"
             placeholder="Senha"
-            onfocus="this.placeholder = ''"
-            onblur="this.placeholder = 'Digite sua senha'"
+            onFocus={(e) => (e.target.placeholder = "")}
+            onBlur={(e) => (e.target.placeholder = "Digite sua senha")}
           />
         </div>
-        <button type="submit" class="btn-register">
+        <button type="submit" className="btn-register">
           Registre-se
         </button>
-        <hr class="hr2" />
-        <a href="/login" class="login-register">
+        <hr className="hr2" />
+        <a href="/login" className="login-register">
           Já tenho uma conta
         </a>
       </form>
