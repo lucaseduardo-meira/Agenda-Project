@@ -11,20 +11,20 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Router exact path="/">
+        <Route exact path="/">
           <ContextWrapper>
             <Home />
           </ContextWrapper>
-        </Router>
+        </Route>
       </Switch>
 
       <Switch>
-        <Router path="/login">
+        <Route path="/login">
           <Login />
-        </Router>
-        <Router path="/register">
+        </Route>
+        <Route path="/register">
           <Register />
-        </Router>
+        </Route>
       </Switch>
     </Router>
   );
