@@ -56,7 +56,7 @@ module.exports = {
           secure: process.env.NODE_ENV === "production",
         })
         .status(200)
-        .json({ message: "Loged in" });
+        .json("ok");
     } catch (err) {
       return res.status(500).json(err);
     }
