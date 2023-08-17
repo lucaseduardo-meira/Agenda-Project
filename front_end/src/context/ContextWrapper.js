@@ -6,6 +6,7 @@ import dayjs from "dayjs";
 function savedEventsReducer(state, { type, payload }) {
   switch (type) {
     case "start":
+      console.log("fetch");
       return payload;
 
     case "push":
@@ -70,14 +71,16 @@ export default function ContextWrapper(props) {
     [],
     initEvents
   );
+
   useEffect(() => {
+    console.log("Done");
     const fetchData = async () => {
       await axios.get("http://localhost:5000/").then(function (response) {
         dispatchCallEvent({ type: "start", payload: response.data });
       });
     };
     fetchData();
-  }, [savedEvents]);
+  }, []);
 
   const filteredEvents = useMemo(() => {
     // console.log(savedEvents);
