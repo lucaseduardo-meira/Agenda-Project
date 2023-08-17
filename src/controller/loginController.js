@@ -36,7 +36,7 @@ module.exports = {
     try {
       const user = await User.findOne({ username: req.body.username });
 
-      if (!user) return res.status(500).json("User Dont exist");
+      if (!user) return res.status(500).json({ message: "error" });
 
       var bytes = CryptoJS.AES.decrypt(user.password, process.env.PASS_SEC);
       const pass = bytes.toString(CryptoJS.enc.Utf8);

@@ -9,16 +9,29 @@ export default function Login() {
   const [password, setPassword] = useState("");
   async function login(ev) {
     ev.preventDefault();
-    await axios.post(
-      "http://localhost:5000/login",
-      {
-        username,
-        password,
-      },
-      {
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+    await axios
+      .post(
+        "http://localhost:5000/login",
+        {
+          username,
+          password,
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      )
+      .then(function (response) {
+        alert("registration successful");
+      })
+      .catch(function (error) {
+        alert("registration failed");
+      });
+    // console.log(response);
+    // if (response.status === 200) {
+    //   alert("registration succeded");
+    // } else {
+    //   alert("registration failed");
+    // }
   }
 
   return (
