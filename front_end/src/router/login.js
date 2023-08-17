@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 import "../assets/css/styles.css";
 import Schedule from "../assets/img/schedule.svg";
@@ -7,6 +8,7 @@ import Schedule from "../assets/img/schedule.svg";
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [redirect, setRedirect] = useState(false);
   async function login(ev) {
     ev.preventDefault();
     await axios
@@ -18,20 +20,20 @@ export default function Login() {
         },
         {
           headers: { "Content-Type": "application/json" },
+          withCredentials: true,
         }
       )
       .then(function (response) {
-        alert("registration successful");
-      })
-      .catch(function (error) {
-        alert("registration failed");
+        if (response.status === 200) {
+          setRedirect(true);
+        } else {
+          alert("Wrong credentials");
+        }
       });
-    // console.log(response);
-    // if (response.status === 200) {
-    //   alert("registration succeded");
-    // } else {
-    //   alert("registration failed");
-    // }
+  }
+
+  if (redirect) {
+    return <Redirect to={"/"} />;
   }
 
   return (
