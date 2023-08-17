@@ -1,8 +1,26 @@
 import React from "react";
+import { useState } from "react";
+import axios from "axios";
 import "../assets/css/styles.css";
 import Schedule from "../assets/img/schedule.svg";
 
-function Login() {
+export default function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  async function login(ev) {
+    ev.preventDefault();
+    await axios.post(
+      "http://localhost:5000/login",
+      {
+        username,
+        password,
+      },
+      {
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+  }
+
   return (
     <div className="main-login">
       <div className="left-login">
@@ -17,16 +35,16 @@ function Login() {
         />
       </div>
       <div className="right-login">
-        <form action="/login" method="post" className="card-login">
+        <form className="card-login" onSubmit={login}>
           <h1>LOGIN</h1>
           <hr />
           <div className="textfield-login">
             <label htmlFor="username">Usuário</label>
             <input
               type="text"
-              name="username"
+              value={username}
               placeholder="Digite seu usuário"
-              // onFocus="this.placeholder = ''"
+              onChange={(ev) => setUsername(ev.target.value)}
               onFocus={(e) => (e.target.placeholder = "")}
               onBlur={(e) => (e.target.placeholder = "Digite seu usuário")}
               // onBlur="this.placeholder = 'Digite seu usuário'"
@@ -36,8 +54,9 @@ function Login() {
             <label htmlFor="password">Senha</label>
             <input
               type="password"
-              name="password"
+              value={password}
               placeholder="Digite sua senha"
+              onChange={(ev) => setPassword(ev.target.value)}
               onFocus={(e) => (e.target.placeholder = "")}
               onBlur={(e) => (e.target.placeholder = "Digite sua senha")}
             />
@@ -54,5 +73,3 @@ function Login() {
     </div>
   );
 }
-
-export default Login;
