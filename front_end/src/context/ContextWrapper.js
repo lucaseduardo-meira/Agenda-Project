@@ -73,7 +73,6 @@ export default function ContextWrapper(props) {
   );
 
   useEffect(() => {
-    console.log("Done");
     const fetchData = async () => {
       await axios.get("http://localhost:5000/").then(function (response) {
         dispatchCallEvent({ type: "start", payload: response.data });
@@ -83,7 +82,6 @@ export default function ContextWrapper(props) {
   }, []);
 
   const filteredEvents = useMemo(() => {
-    // console.log(savedEvents);
     return savedEvents.filter((evt) =>
       labels
         .filter((lbl) => lbl.checked)
