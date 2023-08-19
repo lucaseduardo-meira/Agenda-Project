@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import ContextWrapper from "./context/ContextWrapper";
+import { AuthContextProvider } from "./context/AuthContext";
 
 // @ts-ignore
 import Login from "./router/Login";
@@ -12,9 +13,9 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/">
-          <ContextWrapper>
-            <Home />
-          </ContextWrapper>
+          {/* <ContextWrapper> */}
+          <Home />
+          {/* </ContextWrapper> */}
         </Route>
       </Switch>
 
