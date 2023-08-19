@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useSignup } from "../hooks/useRegister";
 import axios from "axios";
 import "../assets/css/styles.css";
 
@@ -7,31 +8,16 @@ export default function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  async function register(ev) {
+  const { signup, error, isLoading } = useSignup();
+
+  async function handleSubmit(ev) {
     ev.preventDefault();
-    await axios
-      .post(
-        "http://localhost:5000/login",
-        {
-          username,
-          email,
-          password,
-        },
-        {
-          headers: { "Content-Type": "application/json" },
-        }
-      )
-      .then(function (response) {
-        alert("registration successful");
-      })
-      .catch(function (error) {
-        alert("registration failed");
-      });
+    await signup(username, email, password);
   }
 
   return (
     <div className="main-register">
-      <form className="card-register" onSubmit={register}>
+      <form className="card-register" onSubmit={handleSubmit}>
         <div className="card-header">
           <h1>
             Inscreva-se <br />e planeje a sua agenda
@@ -71,9 +57,10 @@ export default function Register() {
             onBlur={(e) => (e.target.placeholder = "Digite sua senha")}
           />
         </div>
-        <button type="submit" className="btn-register">
+        <button type="submit" className="btn-register" disabled={isLoading}>
           Registre-se
         </button>
+        {error && <div className="error">{error}</div>}
         <hr className="hr2" />
         <a href="/login" className="login-register">
           Já tenho uma conta
