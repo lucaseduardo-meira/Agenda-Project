@@ -136,6 +136,17 @@ hr {
   color: #33ff8f;
 }
 
+.error {
+  font-size: 16pt;
+  width: 80%;
+  height: 80%;
+  color: #d8000c;
+  background-color: #ffbaba;
+  border-radius: 10px;
+  text-align: center;
+  vertical-align: middle;
+}
+
 @media only screen and (max-width: 950px) {
   .card-login {
     width: 85%;
