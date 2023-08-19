@@ -6,8 +6,24 @@ import SideBar from "../components/SideBar";
 import Month from "../components/Month";
 import GlobalContext from "../context/GlobalContext";
 import EventModel from "../components/EventModel";
+import axios from "axios";
 
 function Home() {
+  useEffect(() => {
+    const checkLogin = async () => {
+      await axios
+        .get("http://localhost:5000", {
+          withCredentials: true,
+        })
+        .then(function (response) {
+          return response.status;
+        });
+    };
+
+    const status = checkLogin();
+    if (status === 200) {
+    }
+  }, []);
   const [currentMonth, setCurrentMonth] = useState(getMonth());
   const { monthIndex, showEventModel } = useContext(GlobalContext);
   useEffect(() => {
