@@ -5,8 +5,7 @@ module.exports = {
   // Show the calendar
   async showCalendar(req, res) {
     try {
-      console.log(req.user);
-      const id = "64b458e0a396cdf48ccffe25";
+      const id = "64e13cb2f845aa81cb93e437";
       const user = await User.findById(id);
       if (!user) return res.status(500).json("User not found");
       const tasks = await Task.find({ userID: id });
@@ -21,7 +20,7 @@ module.exports = {
   async createTask(req, res) {
     try {
       const event = req.body.task;
-      const id = "64b458e0a396cdf48ccffe25";
+      const id = "64e13cb2f845aa81cb93e437";
       const user = await User.findById(id);
       if (!user) return res.status(500).json({ error: "User not found" });
       const task = await new Task({
@@ -29,7 +28,7 @@ module.exports = {
         date: event.date,
         description: event.description,
         label: event.label,
-        userID: "64b458e0a396cdf48ccffe25",
+        userID: "64e13cb2f845aa81cb93e437",
       });
       await task.save();
       return res.status(200).json(task);
@@ -44,7 +43,7 @@ module.exports = {
     try {
       // const id = req.body.userID;
       const event = req.body.task;
-      const id = "64b458e0a396cdf48ccffe25";
+      const id = "64e13cb2f845aa81cb93e437";
       const user = await User.findById(id);
       if (!user) return res.status(500).json({ error: "User not found" });
       const task = await Task.findByIdAndUpdate(
@@ -62,7 +61,7 @@ module.exports = {
 
   async deleteTask(req, res) {
     try {
-      const id = "64b458e0a396cdf48ccffe25";
+      const id = "64e13cb2f845aa81cb93e437";
       const event = req.body._id;
       const user = await User.findById(id);
       if (!user) return res.status(500).json({ error: "User not found" });

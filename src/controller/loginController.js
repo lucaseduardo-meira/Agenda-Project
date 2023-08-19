@@ -5,28 +5,36 @@ const jwt = require("jsonwebtoken");
 module.exports = {
   // CREATE A NEW USER
   async createUser(req, res) {
-    const pass = CryptoJS.AES.encrypt(
-      req.body.password,
-      process.env.PASS_SEC
-    ).toString();
-
-    const user = new User({
-      username: req.body.username,
-      password: pass,
-      email: req.body.email,
-    });
     try {
+      const exists = await User.findOne({ email: req.body.email });
+
+      if (exists) {
+        throw Error("Email already in use");
+      }
+
+      const pass = CryptoJS.AES.encrypt(
+        req.body.password,
+        process.env.PASS_SEC
+      ).toString();
+
+      const user = new User({
+        username: req.body.username,
+        password: pass,
+        email: req.body.email,
+      });
+
       const newUser = await user.save();
 
       const accessToken = jwt.sign({ id: newUser.id }, process.env.JWT_SEC, {
         expiresIn: "1d",
       });
 
-      const { password, ...others } = newUser._doc;
+      const username = newUser._doc.username;
 
-      return res.status(200).json({ others, accessToken });
-    } catch (err) {
-      return res.status(500).json(err);
+      return res.status(200).json({ username, accessToken });
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({ error: error.message });
     }
   },
 
