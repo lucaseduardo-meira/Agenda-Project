@@ -6,7 +6,6 @@ import dayjs from "dayjs";
 function savedEventsReducer(state, { type, payload }) {
   switch (type) {
     case "start":
-      console.log("fetch");
       return payload;
 
     case "push":
