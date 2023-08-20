@@ -137,11 +137,12 @@ hr {
 }
 
 .error {
-  font-size: 16pt;
+  padding: 15px;
+  font-size: 14pt;
   width: 80%;
   height: 80%;
-  color: #d8000c;
-  background-color: #ffbaba;
+  color: #ffffff;
+  background-color: #e91429;
   border-radius: 10px;
   text-align: center;
   vertical-align: middle;
