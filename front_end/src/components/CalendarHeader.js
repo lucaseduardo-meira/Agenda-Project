@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
+import { useLogout } from "../hooks/useLogout";
 import logo from "../assets/logo.png";
 import GlobalContext from "../context/GlobalContext";
 import dayjs from "dayjs";
 
 export default function CalendarHeader() {
+  const { logout } = useLogout();
   const { monthIndex, setMonthIndex } = useContext(GlobalContext);
   function handlePrevMonth() {
     setMonthIndex(monthIndex - 1);
@@ -18,6 +20,11 @@ export default function CalendarHeader() {
         : dayjs().month()
     );
   }
+
+  const handleClick = () => {
+    logout();
+  };
+
   return (
     <div>
       <header className="px-4 py-2 flex items-center">
@@ -40,6 +47,16 @@ export default function CalendarHeader() {
         <h2 className="ml-4 text-xl text-gray-500 font-bold">
           {dayjs(new Date(dayjs().year(), monthIndex)).format("MMMM YYYY")}
         </h2>
+        <nav className="flex items-end">
+          <div>
+            <button
+              className="rounded cursor-pointer text-[1em] px-2.5 py-1.5 border-2 border-solid border-[#1aac83] text-[#1aac83]"
+              onClick={handleClick}
+            >
+              Log out
+            </button>
+          </div>
+        </nav>
       </header>
     </div>
   );
