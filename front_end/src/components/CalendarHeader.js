@@ -47,10 +47,10 @@ export default function CalendarHeader() {
         <h2 className="ml-4 text-xl text-gray-500 font-bold">
           {dayjs(new Date(dayjs().year(), monthIndex)).format("MMMM YYYY")}
         </h2>
-        <nav className="flex items-end">
+        <nav className="flex items-end absolute ml-[1750px]">
           <div>
             <button
-              className="rounded cursor-pointer text-[1em] px-2.5 py-1.5 border-2 border-solid border-[#1aac83] text-[#1aac83]"
+              className="rounded cursor-pointer text-[1em] px-2.5 py-1.5 border-2 border-solid border-[#bf1212] text-[#bf1212] hover:text-[white] hover:bg-[#bf1212] transition duration-150"
               onClick={handleClick}
             >
               Log out
