@@ -148,6 +148,18 @@ hr {
   vertical-align: middle;
 }
 
+.loginError {
+  padding: 15px;
+  font-size: 14pt;
+  width: 80%;
+  height: fit-content;
+  color: #ffffff;
+  background-color: #e91429;
+  border-radius: 10px;
+  text-align: center;
+  vertical-align: middle;
+}
+
 @media only screen and (max-width: 950px) {
   .card-login {
     width: 85%;
