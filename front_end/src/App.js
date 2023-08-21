@@ -1,4 +1,10 @@
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import { useAuthContext } from "./hooks/useAuthContext";
 
 import ContextWrapper from "./context/ContextWrapper";
 import { AuthContextProvider } from "./context/AuthContext";
@@ -9,6 +15,7 @@ import Home from "./router/Home";
 import Register from "./router/Register";
 
 function App() {
+  const { user } = useAuthContext();
   return (
     <Router>
       <Switch>
