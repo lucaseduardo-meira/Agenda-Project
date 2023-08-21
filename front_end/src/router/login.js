@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
+import { useLogin } from "../hooks/useLogin";
 import axios from "axios";
 import "../assets/css/styles.css";
 import Schedule from "../assets/img/schedule.svg";
@@ -9,28 +10,12 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
-  async function login(ev) {
+  const { login, error, isLoading } = useLogin();
+  const handleSubmit = async (ev) => {
     ev.preventDefault();
-    await axios
-      .post(
-        "http://localhost:5000/login",
-        {
-          username,
-          password,
-        },
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
-      )
-      .then(function (response) {
-        if (response.status === 200) {
-          setRedirect(true);
-        } else {
-          alert("Wrong credentials");
-        }
-      });
-  }
+
+    await login(username, password);
+  };
 
   if (redirect) {
     return <Redirect to={"/"} />;
@@ -50,7 +35,7 @@ export default function Login() {
         />
       </div>
       <div className="right-login">
-        <form className="card-login" onSubmit={login}>
+        <form className="card-login" onSubmit={handleSubmit}>
           <h1>LOGIN</h1>
           <hr />
           <div className="textfield-login">
@@ -76,9 +61,10 @@ export default function Login() {
               onBlur={(e) => (e.target.placeholder = "Digite sua senha")}
             />
           </div>
-          <button type="submit" className="btn-login">
-            login
+          <button type="submit" className="btn-login" disabled={isLoading}>
+            Login
           </button>
+          {error && <div className="loginError">{error}</div>}
           <hr />
           <a href="/register" className="register-login">
             Cadastre-se <i className="fas fa-angle-double-right"></i>
