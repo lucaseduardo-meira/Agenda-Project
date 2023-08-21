@@ -15,7 +15,7 @@ router.delete("/", homeController.deleteTask);
 // Login page
 
 router.get("/login", logout, services.login);
-router.post("/login", logout, loginController.login);
+router.post("/login", loginController.login);
 
 // Register page
 
