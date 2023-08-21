@@ -13,9 +13,9 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/">
-          {/* <ContextWrapper> */}
-          <Home />
-          {/* </ContextWrapper> */}
+          <ContextWrapper>
+            <Home />
+          </ContextWrapper>
         </Route>
       </Switch>
 
