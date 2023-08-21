@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useReducer, useState } from "react";
+import { useAuthContext } from "../hooks/useAuthContext";
 import axios from "axios";
 import GlobalContext from "./GlobalContext";
 import dayjs from "dayjs";
@@ -10,6 +11,19 @@ function savedEventsReducer(state, { type, payload }) {
 
     case "push":
       async function pushEvent(task) {
+        // const response = await fetch("/", {
+        //   method: "POST",
+        //   body: task,
+        //   headers: {
+        //     "Content-type": "application/json",
+        //     Authorization: `Bearer ${authorization}`,
+        //   },
+        // });
+
+        // const json = await response.json();
+        // if (!response.ok) {
+        //   console.log(json.error);
+        // }
         await axios
           .post("http://localhost:5000/", {
             task,
@@ -72,6 +86,23 @@ export default function ContextWrapper(props) {
   );
 
   useEffect(() => {
+    //   console.log("fetchdata");
+    //   const response = await fetch("/", {
+    //     headers: {
+    //       Authorization: `Bearer ${user.token}`,
+    //     },
+    //   });
+    //   const json = await response.json();
+    //   console.log(json);
+    //   if (response.ok) {
+    //     dispatchCallEvent({ type: "start", payload: json });
+    //   }
+    // if (user) {
+    //   fetchData();
+    // }
+    // if (!user) {
+    //   console.log("error");
+    // }
     const fetchData = async () => {
       await axios.get("http://localhost:5000/").then(function (response) {
         dispatchCallEvent({ type: "start", payload: response.data });
