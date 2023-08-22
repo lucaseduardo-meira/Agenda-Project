@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useLogin } from "../hooks/useLogin";
 import axios from "axios";
 import "../assets/css/styles.css";
@@ -18,7 +18,7 @@ export default function Login() {
   };
 
   if (redirect) {
-    return <Redirect to={"/"} />;
+    return <Navigate to="/" />;
   }
 
   return (

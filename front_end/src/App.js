@@ -1,9 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
 
 import ContextWrapper from "./context/ContextWrapper";
@@ -17,24 +12,24 @@ import Register from "./router/Register";
 function App() {
   const { user } = useAuthContext();
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <ContextWrapper>
-            <Home />
-          </ContextWrapper>
-        </Route>
-      </Switch>
-
-      <Switch>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/register">
-          <Register />
-        </Route>
-      </Switch>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            user ? (
+              <ContextWrapper>
+                <Home />
+              </ContextWrapper>
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
