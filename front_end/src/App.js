@@ -26,8 +26,14 @@ function App() {
             )
           }
         />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route
+          path="/login"
+          element={!user ? <Login /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/register"
+          element={!user ? <Register /> : <Navigate to="/" />}
+        />
       </Routes>
     </BrowserRouter>
   );
