@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import GlobalContext from "../context/GlobalContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 const labelsClasses = ["indigo", "gray", "green", "blue", "red", "purple"];
 
 export default function EventModel() {
@@ -15,9 +16,14 @@ export default function EventModel() {
       ? labelsClasses.find((lbl) => lbl === selectedEvent.label)
       : labelsClasses[0]
   );
+  const { user } = useAuthContext();
 
   async function handleSubmit(e) {
     e.preventDefault();
+    if (!user) {
+      return;
+    }
+
     const calendarEvent = {
       title,
       description,
@@ -26,12 +32,20 @@ export default function EventModel() {
       id: selectedEvent ? selectedEvent._id : null,
     };
     if (selectedEvent) {
-      dispatchCallEvent({ type: "update", payload: calendarEvent });
+      dispatchCallEvent({
+        type: "update",
+        payload: calendarEvent,
+        auth: user.accessToken,
+      });
     } else {
       if (calendarEvent.id === null) {
         delete calendarEvent.id;
       }
-      dispatchCallEvent({ type: "push", payload: calendarEvent });
+      dispatchCallEvent({
+        type: "push",
+        payload: calendarEvent,
+        auth: user.accessToken,
+      });
     }
     setShowEventModel(false);
   }

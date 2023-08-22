@@ -4,33 +4,37 @@ import axios from "axios";
 import GlobalContext from "./GlobalContext";
 import dayjs from "dayjs";
 
-function savedEventsReducer(state, { type, payload }) {
+function savedEventsReducer(state, { type, payload, auth }) {
   switch (type) {
     case "start":
       return payload;
 
     case "push":
+      console.log(auth);
       async function pushEvent(task) {
-        // const response = await fetch("/", {
-        //   method: "POST",
-        //   body: task,
-        //   headers: {
-        //     "Content-type": "application/json",
-        //     Authorization: `Bearer ${authorization}`,
-        //   },
-        // });
+        const response = await fetch("/", {
+          method: "POST",
+          body: task,
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${auth}`,
+          },
+        });
 
-        // const json = await response.json();
-        // if (!response.ok) {
-        //   console.log(json.error);
-        // }
-        await axios
-          .post("http://localhost:5000/", {
-            task,
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+        const json = await response.json();
+        if (!response.ok) {
+          console.log(json.error);
+        }
+        if (response.ok) {
+          console.log("ok");
+        }
+        // await axios
+        //   .post("http://localhost:5000/", {
+        //     task,
+        //   })
+        //   .catch(function (error) {
+        //     console.log(error);
+        //   });
       }
       pushEvent(payload);
       return [...state, payload];
@@ -90,7 +94,7 @@ export default function ContextWrapper(props) {
   useEffect(() => {
     const fetchData = async () => {
       console.log("fetch");
-      const response = await fetch("http://localhost:5000/ ", {
+      const response = await fetch("/ ", {
         headers: {
           Authorization: `Bearer ${user.accessToken}`,
         },
