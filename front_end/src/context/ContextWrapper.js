@@ -86,6 +86,7 @@ export default function ContextWrapper(props) {
   );
 
   useEffect(() => {
+    console.log("fetch");
     //   console.log("fetchdata");
     //   const response = await fetch("/", {
     //     headers: {
