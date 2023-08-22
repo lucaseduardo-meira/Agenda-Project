@@ -85,31 +85,36 @@ export default function ContextWrapper(props) {
     initEvents
   );
 
+  const { user } = useAuthContext();
+
   useEffect(() => {
-    console.log("fetch");
-    //   console.log("fetchdata");
-    //   const response = await fetch("/", {
-    //     headers: {
-    //       Authorization: `Bearer ${user.token}`,
-    //     },
-    //   });
-    //   const json = await response.json();
-    //   console.log(json);
-    //   if (response.ok) {
-    //     dispatchCallEvent({ type: "start", payload: json });
-    //   }
-    // if (user) {
-    //   fetchData();
-    // }
-    // if (!user) {
-    //   console.log("error");
-    // }
     const fetchData = async () => {
-      await axios.get("http://localhost:5000/").then(function (response) {
-        dispatchCallEvent({ type: "start", payload: response.data });
+      console.log("fetch");
+      const response = await fetch("http://localhost:5000/ ", {
+        headers: {
+          Authorization: `Bearer ${user.accessToken}`,
+        },
       });
+      console.log(response);
+      const json = await response.json();
+      console.log(json);
+      if (response.ok) {
+        dispatchCallEvent({ type: "start", payload: json });
+      }
     };
-    fetchData();
+
+    // const fetchData = async () => {
+    //   console.log("fetch");
+    //   await axios.get("http://localhost:5000/").then(function (response) {
+    //     dispatchCallEvent({ type: "start", payload: response.data });
+    //   });
+    // };
+    if (user) {
+      fetchData();
+    }
+    if (!user) {
+      console.log("error");
+    }
   }, []);
 
   const filteredEvents = useMemo(() => {

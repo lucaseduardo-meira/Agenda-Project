@@ -9,9 +9,8 @@ const verifyToken = async (req, res, next) => {
 
   const token = authorization.split(" ")[1];
   try {
-    const { _id } = jwt.verify(token, process.env.JWT_SEC);
-
-    req.user = await User.findOne({ _id }).select("_id");
+    const { id } = jwt.verify(token, process.env.JWT_SEC);
+    req.user = await User.findById(id);
     next();
   } catch (error) {
     console.log(error);
