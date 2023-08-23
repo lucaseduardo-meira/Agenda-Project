@@ -32,20 +32,53 @@ export default function EventModel() {
       id: selectedEvent ? selectedEvent._id : null,
     };
     if (selectedEvent) {
-      dispatchCallEvent({
-        type: "update",
-        payload: calendarEvent,
-        auth: user.accessToken,
-      });
+      async function updateEvent(task) {
+        const response = await fetch("/", {
+          method: "PUT",
+          body: JSON.stringify(task),
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${user.accessToken}`,
+          },
+        });
+
+        const json = await response.json();
+        if (!response.ok) {
+          console.log(json.error);
+        }
+        if (response.ok) {
+          dispatchCallEvent({ type: "update", payload: calendarEvent });
+          console.log("ok");
+        }
+      }
+      updateEvent(calendarEvent);
     } else {
       if (calendarEvent.id === null) {
         delete calendarEvent.id;
       }
-      dispatchCallEvent({
-        type: "push",
-        payload: calendarEvent,
-        auth: user.accessToken,
-      });
+      async function pushEvent(task) {
+        const response = await fetch("/", {
+          method: "POST",
+          body: JSON.stringify(task),
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${user.accessToken}`,
+          },
+        });
+
+        const json = await response.json();
+        console.log(json);
+        if (!response.ok) {
+          console.log(json.error);
+        }
+        if (response.ok) {
+          dispatchCallEvent({
+            type: "push",
+            payload: json,
+          });
+        }
+      }
+      pushEvent(calendarEvent);
     }
     setShowEventModel(false);
   }

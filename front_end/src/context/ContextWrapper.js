@@ -9,48 +9,48 @@ function savedEventsReducer(state, { type, payload, auth }) {
       return payload;
 
     case "push":
-      async function pushEvent(task) {
-        console.log("push");
-        const response = await fetch("/", {
-          method: "POST",
-          body: JSON.stringify(task),
-          headers: {
-            "Content-type": "application/json",
-            Authorization: `Bearer ${auth}`,
-          },
-        });
+      // async function pushEvent(task) {
+      //   const response = await fetch("/", {
+      //     method: "POST",
+      //     body: JSON.stringify(task),
+      //     headers: {
+      //       "Content-type": "application/json",
+      //       Authorization: `Bearer ${auth}`,
+      //     },
+      //   });
 
-        const json = await response.json();
-        if (!response.ok) {
-          console.log(json.error);
-        }
-        if (response.ok) {
-          console.log("ok");
-        }
-      }
-      pushEvent(payload);
+      //   const json = await response.json();
+      //   console.log(json);
+      //   if (!response.ok) {
+      //     console.log(json.error);
+      //   }
+      //   if (response.ok) {
+      //     console.log("ok");
+      //     return [...state, json];
+      //   }
+      // }
+      // pushEvent(payload);
       return [...state, payload];
-
     case "update":
-      async function updateEvent(task) {
-        const response = await fetch("/", {
-          method: "PUT",
-          body: JSON.stringify(task),
-          headers: {
-            "Content-type": "application/json",
-            Authorization: `Bearer ${auth}`,
-          },
-        });
+      // async function updateEvent(task) {
+      //   const response = await fetch("/", {
+      //     method: "PUT",
+      //     body: JSON.stringify(task),
+      //     headers: {
+      //       "Content-type": "application/json",
+      //       Authorization: `Bearer ${auth}`,
+      //     },
+      //   });
 
-        const json = await response.json();
-        if (!response.ok) {
-          console.log(json.error);
-        }
-        if (response.ok) {
-          console.log("ok");
-        }
-      }
-      updateEvent(payload);
+      //   const json = await response.json();
+      //   if (!response.ok) {
+      //     console.log(json.error);
+      //   }
+      //   if (response.ok) {
+      //     console.log("ok");
+      //   }
+      // }
+      // updateEvent(payload);
       return state.map((evt) => (evt._id === payload.id ? payload : evt));
 
     case "delete":
@@ -114,12 +114,6 @@ export default function ContextWrapper(props) {
       }
     };
 
-    // const fetchData = async () => {
-    //   console.log("fetch");
-    //   await axios.get("http://localhost:5000/").then(function (response) {
-    //     dispatchCallEvent({ type: "start", payload: response.data });
-    //   });
-    // };
     if (user) {
       fetchData();
     }
