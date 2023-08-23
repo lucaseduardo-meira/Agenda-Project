@@ -53,9 +53,7 @@ export default function EventModel() {
       }
       updateEvent(calendarEvent);
     } else {
-      if (calendarEvent.id === null) {
-        delete calendarEvent.id;
-      }
+      delete calendarEvent.id;
       async function pushEvent(task) {
         const response = await fetch("/", {
           method: "POST",
