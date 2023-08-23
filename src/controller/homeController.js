@@ -42,7 +42,6 @@ module.exports = {
 
   async updateTask(req, res) {
     try {
-      // const id = req.body.userID;
       const event = req.body;
       const id = req.user.id;
       const user = await User.findById(id);
