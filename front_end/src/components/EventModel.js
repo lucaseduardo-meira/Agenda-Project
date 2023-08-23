@@ -61,7 +61,11 @@ export default function EventModel() {
             {selectedEvent && (
               <span
                 onClick={() => {
-                  dispatchCallEvent({ type: "delete", payload: selectedEvent });
+                  dispatchCallEvent({
+                    type: "delete",
+                    payload: selectedEvent,
+                    auth: user.accessToken,
+                  });
                   setShowEventModel(false);
                 }}
                 className="material-icons-outlined text-gray-400 cursor-pointer"
