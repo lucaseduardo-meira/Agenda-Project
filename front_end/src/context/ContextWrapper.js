@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useReducer, useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
-import axios from "axios";
 import GlobalContext from "./GlobalContext";
 import dayjs from "dayjs";
 
