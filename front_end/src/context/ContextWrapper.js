@@ -28,27 +28,11 @@ function savedEventsReducer(state, { type, payload, auth }) {
         if (response.ok) {
           console.log("ok");
         }
-        // await axios
-        //   .post("http://localhost:5000/", {
-        //     task,
-        //   })
-        //   .catch(function (error) {
-        //     console.log(error);
-        //   });
       }
       pushEvent(payload);
       return [...state, payload];
 
     case "update":
-      // async function updateEvent(task) {
-      //   await axios
-      //     .put("http://localhost:5000/", {
-      //       task,
-      //     })
-      //     .catch(function (error) {
-      //       console.log(error);
-      //     });
-      // }
       async function updateEvent(task) {
         const response = await fetch("/", {
           method: "PUT",
@@ -71,18 +55,6 @@ function savedEventsReducer(state, { type, payload, auth }) {
       return state.map((evt) => (evt._id === payload.id ? payload : evt));
 
     case "delete":
-      console.log(auth);
-      // async function deleteTask(task) {
-      //   console.log(task);
-      //   await axios
-      //     .delete("http://localhost:5000/", {
-      //       data: task,
-      //     })
-      //     .catch(function (error) {
-      //       console.log(error);
-      //     });
-      // }
-
       async function deleteTask(task) {
         const response = await fetch("/", {
           method: "DELETE",
