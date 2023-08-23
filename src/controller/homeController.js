@@ -19,7 +19,7 @@ module.exports = {
 
   async createTask(req, res) {
     try {
-      const event = req.body.task;
+      const event = req.body;
       const id = req.user.id;
       const user = await User.findById(id);
       if (!user) return res.status(500).json({ error: "User not found" });
@@ -33,6 +33,7 @@ module.exports = {
       await task.save();
       return res.status(200).json(task);
     } catch (err) {
+      console.log(err);
       return res.status(500).json(err);
     }
   },
@@ -63,6 +64,8 @@ module.exports = {
     try {
       const id = req.user.id;
       const event = req.body._id;
+      console.log(event);
+
       const user = await User.findById(id);
       if (!user) return res.status(500).json({ error: "User not found" });
       const task = await Task.findByIdAndDelete(event);

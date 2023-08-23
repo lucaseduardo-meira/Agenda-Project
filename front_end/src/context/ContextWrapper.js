@@ -10,11 +10,11 @@ function savedEventsReducer(state, { type, payload, auth }) {
       return payload;
 
     case "push":
-      console.log(auth);
       async function pushEvent(task) {
+        console.log("push");
         const response = await fetch("/", {
           method: "POST",
-          body: task,
+          body: JSON.stringify(task),
           headers: {
             "Content-type": "application/json",
             Authorization: `Bearer ${auth}`,
@@ -53,15 +53,35 @@ function savedEventsReducer(state, { type, payload, auth }) {
       return state.map((evt) => (evt._id === payload.id ? payload : evt));
 
     case "delete":
+      console.log(auth);
+      // async function deleteTask(task) {
+      //   console.log(task);
+      //   await axios
+      //     .delete("http://localhost:5000/", {
+      //       data: task,
+      //     })
+      //     .catch(function (error) {
+      //       console.log(error);
+      //     });
+      // }
+
       async function deleteTask(task) {
-        console.log(task);
-        await axios
-          .delete("http://localhost:5000/", {
-            data: task,
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+        const response = await fetch("/", {
+          method: "DELETE",
+          body: JSON.stringify(task),
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${auth}`,
+          },
+        });
+
+        const json = await response.json();
+        if (!response.ok) {
+          console.log(json.error);
+        }
+        if (response.ok) {
+          console.log("ok");
+        }
       }
       deleteTask(payload);
       return state.filter((evt) => evt._id !== payload._id);
@@ -93,13 +113,11 @@ export default function ContextWrapper(props) {
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log("fetch");
-      const response = await fetch("/ ", {
+      const response = await fetch("http://localhost:5000/ ", {
         headers: {
           Authorization: `Bearer ${user.accessToken}`,
         },
       });
-      console.log(response);
       const json = await response.json();
       console.log(json);
       if (response.ok) {
