@@ -40,14 +40,32 @@ function savedEventsReducer(state, { type, payload, auth }) {
       return [...state, payload];
 
     case "update":
+      // async function updateEvent(task) {
+      //   await axios
+      //     .put("http://localhost:5000/", {
+      //       task,
+      //     })
+      //     .catch(function (error) {
+      //       console.log(error);
+      //     });
+      // }
       async function updateEvent(task) {
-        await axios
-          .put("http://localhost:5000/", {
-            task,
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+        const response = await fetch("/", {
+          method: "PUT",
+          body: JSON.stringify(task),
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${auth}`,
+          },
+        });
+
+        const json = await response.json();
+        if (!response.ok) {
+          console.log(json.error);
+        }
+        if (response.ok) {
+          console.log("ok");
+        }
       }
       updateEvent(payload);
       return state.map((evt) => (evt._id === payload.id ? payload : evt));
