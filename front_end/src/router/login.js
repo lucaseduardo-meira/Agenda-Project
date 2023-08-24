@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useLogin } from "../hooks/useLogin";
-import axios from "axios";
 import "../assets/css/styles.css";
 import Schedule from "../assets/img/schedule.svg";
 
@@ -47,7 +46,6 @@ export default function Login() {
               onChange={(ev) => setUsername(ev.target.value)}
               onFocus={(e) => (e.target.placeholder = "")}
               onBlur={(e) => (e.target.placeholder = "Digite seu usuário")}
-              // onBlur="this.placeholder = 'Digite seu usuário'"
             />
           </div>
           <div className="textfield-login">

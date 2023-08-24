@@ -59,15 +59,6 @@ module.exports = {
         expiresIn: "1d",
       });
 
-      // const { password, ...others } = user._doc;
-
-      // return res
-      //   .cookie("access_token", accessToken, {
-      //     httpOnly: true,
-      //     secure: process.env.NODE_ENV === "production",
-      //   })
-      //   .status(200)
-      //   .json("ok");
       return res.status(200).json({ username, accessToken });
     } catch (error) {
       return res.status(500).json({ error: error.message });

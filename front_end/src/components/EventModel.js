@@ -33,7 +33,6 @@ export default function EventModel() {
     };
     if (selectedEvent) {
       async function updateEvent(task) {
-        // console.log(task);
         const response = await fetch("/", {
           method: "PUT",
           body: JSON.stringify(task),
