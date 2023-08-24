@@ -43,6 +43,7 @@ module.exports = {
   async updateTask(req, res) {
     try {
       const event = req.body;
+      console.log(event);
       const id = req.user.id;
       const user = await User.findById(id);
       if (!user) return res.status(500).json({ error: "User not found" });
