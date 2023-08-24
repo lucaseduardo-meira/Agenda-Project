@@ -9,50 +9,9 @@ function savedEventsReducer(state, { type, payload, auth }) {
       return payload;
 
     case "push":
-      // async function pushEvent(task) {
-      //   const response = await fetch("/", {
-      //     method: "POST",
-      //     body: JSON.stringify(task),
-      //     headers: {
-      //       "Content-type": "application/json",
-      //       Authorization: `Bearer ${auth}`,
-      //     },
-      //   });
-
-      //   const json = await response.json();
-      //   console.log(json);
-      //   if (!response.ok) {
-      //     console.log(json.error);
-      //   }
-      //   if (response.ok) {
-      //     console.log("ok");
-      //     return [...state, json];
-      //   }
-      // }
-      // pushEvent(payload);
       return [...state, payload];
     case "update":
-      // async function updateEvent(task) {
-      //   const response = await fetch("/", {
-      //     method: "PUT",
-      //     body: JSON.stringify(task),
-      //     headers: {
-      //       "Content-type": "application/json",
-      //       Authorization: `Bearer ${auth}`,
-      //     },
-      //   });
-
-      //   const json = await response.json();
-      //   if (!response.ok) {
-      //     console.log(json.error);
-      //   }
-      //   if (response.ok) {
-      //     console.log("ok");
-      //   }
-      // }
-      // updateEvent(payload);
-      console.log(state.map((evt) => (evt._id === payload.id ? payload : evt)));
-      return state.map((evt) => (evt._id === payload._id ? payload : evt));
+      return state.map((evt) => (evt._id === payload._idid ? payload : evt));
 
     case "delete":
       async function deleteTask(task) {
@@ -109,7 +68,6 @@ export default function ContextWrapper(props) {
         },
       });
       const json = await response.json();
-      console.log(json);
       if (response.ok) {
         dispatchCallEvent({ type: "start", payload: json });
       }

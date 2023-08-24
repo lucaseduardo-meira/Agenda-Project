@@ -15,7 +15,6 @@ export const useSignup = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, email, password }),
     });
-    console.log(response);
     const json = await response.json();
 
     if (!response.ok) {
@@ -23,7 +22,6 @@ export const useSignup = () => {
       setError(json.error);
     }
     if (response.ok) {
-      console.log("response ok");
       localStorage.setItem("user", JSON.stringify(json));
 
       dispatch({ type: "LOGIN", payload: json });

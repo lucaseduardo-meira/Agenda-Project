@@ -20,7 +20,6 @@ export default function EventModel() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(selectedEvent);
     if (!user) {
       return;
     }
