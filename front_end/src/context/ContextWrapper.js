@@ -51,7 +51,8 @@ function savedEventsReducer(state, { type, payload, auth }) {
       //   }
       // }
       // updateEvent(payload);
-      return state.map((evt) => (evt._id === payload.id ? payload : evt));
+      console.log(state.map((evt) => (evt._id === payload.id ? payload : evt)));
+      return state.map((evt) => (evt._id === payload._id ? payload : evt));
 
     case "delete":
       async function deleteTask(task) {
