@@ -20,6 +20,7 @@ export default function EventModel() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    console.log(selectedEvent);
     if (!user) {
       return;
     }
@@ -29,10 +30,11 @@ export default function EventModel() {
       description,
       label: selectedLabel,
       date: daySelected,
-      id: selectedEvent ? selectedEvent._id : null,
+      _id: selectedEvent ? selectedEvent._id : null,
     };
     if (selectedEvent) {
       async function updateEvent(task) {
+        // console.log(task);
         const response = await fetch("/", {
           method: "PUT",
           body: JSON.stringify(task),
