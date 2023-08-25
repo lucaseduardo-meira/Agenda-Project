@@ -34,7 +34,6 @@ export default function CalendarHeader() {
         : dayjs().month()
     );
   }
-  console.log(monthIndex);
   const handleClick = () => {
     logout();
   };
@@ -59,7 +58,6 @@ export default function CalendarHeader() {
         </button>
 
         <h2 className="ml-4 text-xl text-gray-500 font-bold">
-          {/* {dayjs(new Date(dayjs().year(), monthIndex)).format("MMMM YYYY")} */}
           {meses[dayjs(new Date(dayjs().year(), monthIndex)).format("M") - 1]}{" "}
           {dayjs(new Date(dayjs().year(), monthIndex)).format("YYYY")}
         </h2>

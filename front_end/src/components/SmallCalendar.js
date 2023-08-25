@@ -4,6 +4,20 @@ import { getMonth } from "../util";
 import GlobalContext from "../context/GlobalContext";
 
 export default function SmallCalendar() {
+  const meses = [
+    "Janeiro",
+    "Fevereiro",
+    "Março",
+    "Abril",
+    "Maio",
+    "Junho",
+    "Julho",
+    "Agosto",
+    "Setembro",
+    "Outubro",
+    "Novembro",
+    "Dezembro",
+  ];
   const week = ["D", "S", "T", "Q", "Q", "S", "S"];
   const [currentMonthIdx, setCurrentMonthIdx] = useState(dayjs().month());
   const [currentMonth, setCurrentMonth] = useState(getMonth());
@@ -41,7 +55,12 @@ export default function SmallCalendar() {
     <div className="mt-9">
       <header className="flex justify-between">
         <p className="text-gray-500 font-bold">
-          {dayjs(new Date(dayjs().year(), currentMonthIdx)).format("MMMM YYYY")}
+          {
+            meses[
+              dayjs(new Date(dayjs().year(), currentMonthIdx)).format("M") - 1
+            ]
+          }{" "}
+          {dayjs(new Date(dayjs().year(), currentMonthIdx)).format("YYYY")}
         </p>
         <div>
           <button onClick={handlePrevMonth}>
