@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import GlobalContext from "../context/GlobalContext";
 
 export default function Day({ day, rowIdx }) {
+  const week = ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SAB"];
   const [dayEvents, setDayEvents] = useState([]);
   const {
     setDaySelected,
@@ -28,7 +29,6 @@ export default function Day({ day, rowIdx }) {
         {rowIdx === 0 && (
           <p className="text-sm mt-1 ">{day.format("ddd").toUpperCase()}</p>
         )}
-
         <p className={`text-sm p-1 my-1 text-center ${getCurrentDayClass()}`}>
           {day.format("DD")}
         </p>
