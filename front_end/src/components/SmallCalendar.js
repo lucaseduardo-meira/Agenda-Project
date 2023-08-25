@@ -4,6 +4,7 @@ import { getMonth } from "../util";
 import GlobalContext from "../context/GlobalContext";
 
 export default function SmallCalendar() {
+  const week = ["D", "S", "T", "Q", "Q", "S", "S"];
   const [currentMonthIdx, setCurrentMonthIdx] = useState(dayjs().month());
   const [currentMonth, setCurrentMonth] = useState(getMonth());
   useEffect(() => {
@@ -58,7 +59,7 @@ export default function SmallCalendar() {
       <div className="grid grid-cols-7 grid-rows-6">
         {currentMonth[0].map((day, i) => (
           <span key={i} className="text-sm py-1 text-center">
-            {day.format("dd").charAt(0)}
+            {week[day.format("d")]}
           </span>
         ))}
         {currentMonth.map((row, i) => (
