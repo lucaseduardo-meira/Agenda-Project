@@ -31,7 +31,7 @@ export default function CalendarHeader() {
         <img src={logo} alt="logo" className="mr-2 w-12 h-12" />
         <h1 className="mr-10 text-xl text-gray-500 fond-bold">Agenda</h1>
         <button onClick={handleReset} className="border rounded py-2 px-4 mr-5">
-          Today
+          Hoje
         </button>
         <button onClick={handlePrevMonth}>
           <span className="material-icons-outlined cursor-pointer text-gray-600 mx-2">
@@ -53,7 +53,7 @@ export default function CalendarHeader() {
               className="rounded cursor-pointer text-[1em] px-2.5 py-1.5 border-2 border-solid border-[#bf1212] text-[#bf1212] hover:text-[white] hover:bg-[#bf1212] transition duration-150"
               onClick={handleClick}
             >
-              Log out
+              Sair
             </button>
           </div>
         </nav>
