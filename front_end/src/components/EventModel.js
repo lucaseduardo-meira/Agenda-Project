@@ -4,6 +4,29 @@ import { useAuthContext } from "../hooks/useAuthContext";
 const labelsClasses = ["indigo", "gray", "green", "blue", "red", "purple"];
 
 export default function EventModel() {
+  const semana = [
+    "Domingo",
+    "Segunda-feira",
+    "Terça-feira",
+    "Quarta-feira",
+    "Quinta-feira",
+    "Sexta-feira",
+    "Sábado",
+  ];
+  const meses = [
+    "Janeiro",
+    "Fevereiro",
+    "Março",
+    "Abril",
+    "Maio",
+    "Junho",
+    "Julho",
+    "Agosto",
+    "Setembro",
+    "Outubro",
+    "Novembro",
+    "Dezembro",
+  ];
   const { setShowEventModel, daySelected, dispatchCallEvent, selectedEvent } =
     useContext(GlobalContext);
 
@@ -129,7 +152,13 @@ export default function EventModel() {
             <span className="material-icons-outlined text-gray-400">
               schedule
             </span>
-            <p>{daySelected.format("dddd, MMMM DD")}</p>
+            <p>
+              {semana[daySelected.format("d")]}
+              {", "}
+              {daySelected.format("D")}
+              {" de "}
+              {meses[daySelected.format("M")]}
+            </p>
             <span className="material-icons-outlined text-gray-400">
               segment
             </span>
