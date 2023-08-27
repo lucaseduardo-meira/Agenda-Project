@@ -34,6 +34,7 @@ function savedEventsReducer(state, { type, payload, auth }) {
       }
       deleteTask(payload);
       return state.filter((evt) => evt._id !== payload._id);
+
     default:
       throw new Error();
   }
