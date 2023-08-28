@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { useSignup } from "../hooks/useRegister";
-import axios from "axios";
 import "../assets/css/styles.css";
 
 export default function Register() {

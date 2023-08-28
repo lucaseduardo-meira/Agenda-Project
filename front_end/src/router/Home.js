@@ -7,7 +7,6 @@ import SideBar from "../components/SideBar";
 import Month from "../components/Month";
 import GlobalContext from "../context/GlobalContext";
 import EventModel from "../components/EventModel";
-import axios from "axios";
 
 function Home() {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
