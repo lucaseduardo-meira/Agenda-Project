@@ -56,7 +56,7 @@ export default function EventModel() {
     };
     if (selectedEvent) {
       async function updateEvent(task) {
-        const response = await fetch("/", {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/`, {
           method: "PUT",
           body: JSON.stringify(task),
           headers: {
@@ -78,7 +78,7 @@ export default function EventModel() {
     } else {
       delete calendarEvent.id;
       async function pushEvent(task) {
-        const response = await fetch("/", {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/`, {
           method: "POST",
           body: JSON.stringify(task),
           headers: {

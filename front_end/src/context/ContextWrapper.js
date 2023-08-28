@@ -15,7 +15,7 @@ function savedEventsReducer(state, { type, payload, auth }) {
 
     case "delete":
       async function deleteTask(task) {
-        const response = await fetch("/", {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/`, {
           method: "DELETE",
           body: JSON.stringify(task),
           headers: {
@@ -63,7 +63,7 @@ export default function ContextWrapper(props) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("http://localhost:5000/ ", {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/`, {
         headers: {
           Authorization: `Bearer ${user.accessToken}`,
         },
