@@ -5,9 +5,9 @@ import ContextWrapper from "./context/ContextWrapper";
 import { AuthContextProvider } from "./context/AuthContext";
 
 // @ts-ignore
-import Login from "./router/Login";
-import Home from "./router/Home";
-import Register from "./router/Register";
+import Login from "./router/Login.js";
+import Home from "./router/Home.js";
+import Register from "./router/Register.js";
 
 function App() {
   const { user } = useAuthContext();
