@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useAuthContext } from "../hooks/useAuthContext";
 import "../App.css";
 import { getMonth } from "../util";
 import CalendarHeader from "../components/CalendarHeader";
