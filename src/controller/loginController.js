@@ -9,7 +9,7 @@ module.exports = {
       const exists = await User.findOne({ email: req.body.email });
 
       if (exists) {
-        throw Error("Email already in use");
+        throw Error("Email já possui uma conta");
       }
 
       const pass = CryptoJS.AES.encrypt(
