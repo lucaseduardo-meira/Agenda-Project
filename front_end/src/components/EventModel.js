@@ -71,7 +71,6 @@ export default function EventModel() {
         }
         if (response.ok) {
           dispatchCallEvent({ type: "update", payload: calendarEvent });
-          console.log("ok");
         }
       }
       updateEvent(calendarEvent);
