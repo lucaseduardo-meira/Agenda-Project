@@ -71,7 +71,6 @@ export default function EventModel() {
           console.log(json.error);
         }
         if (response.ok) {
-          console.log("response ok");
           dispatchCallEvent({ type: "update", payload: json });
         }
       }
