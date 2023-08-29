@@ -11,7 +11,7 @@ function savedEventsReducer(state, { type, payload, auth }) {
     case "push":
       return [...state, payload];
     case "update":
-      return state.map((evt) => (evt._id === payload._idid ? payload : evt));
+      return state.map((evt) => (evt._id === payload._id ? payload : evt));
 
     case "delete":
       async function deleteTask(task) {
