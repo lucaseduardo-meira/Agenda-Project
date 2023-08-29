@@ -51,10 +51,8 @@ module.exports = {
         { $set: event },
         { new: true }
       );
-      console.log(task);
       return res.status(200).json(task);
     } catch (err) {
-      console.log(err);
       return res.status(500).json(err);
     }
   },
