@@ -46,13 +46,13 @@ module.exports = {
       const user = await User.findOne({ username });
 
       if (!user) {
-        throw Error("User don't exists");
+        throw Error("Usuário não existe");
       }
 
       var bytes = CryptoJS.AES.decrypt(user.password, process.env.PASS_SEC);
       const pass = bytes.toString(CryptoJS.enc.Utf8);
       if (pass != req.body.password) {
-        throw Error("Wrong password");
+        throw Error("Senha incorreta");
       }
 
       const accessToken = jwt.sign({ id: user.id }, process.env.JWT_SEC, {
