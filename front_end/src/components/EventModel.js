@@ -70,7 +70,8 @@ export default function EventModel() {
           console.log(json.error);
         }
         if (response.ok) {
-          dispatchCallEvent({ type: "update", payload: calendarEvent });
+          console.log("response ok");
+          dispatchCallEvent({ type: "update", payload: json });
         }
       }
       updateEvent(calendarEvent);
