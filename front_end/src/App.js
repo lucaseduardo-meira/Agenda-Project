@@ -4,9 +4,9 @@ import { useAuthContext } from "./hooks/useAuthContext";
 import ContextWrapper from "./context/ContextWrapper";
 
 // @ts-ignore
-import Login from "./router/Login";
+import Login from "./router/login";
 import Home from "./router/Home";
-import Register from "./router/Register";
+import Register from "./router/register";
 
 function App() {
   const { user } = useAuthContext();
