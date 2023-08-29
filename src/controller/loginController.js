@@ -6,8 +6,11 @@ module.exports = {
   // CREATE A NEW USER
   async createUser(req, res) {
     try {
+      const existsUser = await User.findOne({ username: req.body.username });
+      if (existsUser) {
+        throw Error("Usuário já possui uma conta");
+      }
       const exists = await User.findOne({ email: req.body.email });
-
       if (exists) {
         throw Error("Email já possui uma conta");
       }
