@@ -28,9 +28,6 @@ function savedEventsReducer(state, { type, payload, auth }) {
         if (!response.ok) {
           console.log(json.error);
         }
-        if (response.ok) {
-          console.log("ok");
-        }
       }
       deleteTask(payload);
       return state.filter((evt) => evt._id !== payload._id);
