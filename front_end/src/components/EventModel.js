@@ -66,7 +66,6 @@ export default function EventModel() {
         });
 
         const json = await response.json();
-        console.log(json);
         if (!response.ok) {
           console.log(json.error);
         }
@@ -88,7 +87,6 @@ export default function EventModel() {
         });
 
         const json = await response.json();
-        console.log(json);
         if (!response.ok) {
           console.log(json.error);
         }
