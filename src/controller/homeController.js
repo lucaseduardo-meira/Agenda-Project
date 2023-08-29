@@ -42,8 +42,9 @@ module.exports = {
 
   async updateTask(req, res) {
     try {
-      console.log(req.body);
       const event = req.body;
+      console.log(event);
+      console.log(event.id);
       const id = req.user.id;
       console.log(id);
       const user = await User.findById(id);
@@ -53,8 +54,10 @@ module.exports = {
         { $set: event },
         { new: true }
       );
+      console.log("ok");
       return res.status(200).json(task);
     } catch (err) {
+      console.log(err);
       return res.status(500).json(err);
     }
   },
