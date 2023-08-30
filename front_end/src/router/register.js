@@ -6,11 +6,19 @@ import "../assets/css/styles.css";
 export default function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState(null);
   const [password, setPassword] = useState("");
   const { signup, error, isLoading } = useSignup();
 
+  function isValidEmail(email) {
+    return /\S+@\S+\.\S+/.test(email);
+  }
   async function handleSubmit(ev) {
     ev.preventDefault();
+    console.log(email);
+    if (!isValidEmail(email)) {
+      return setEmailError("Email não é valido");
+    }
     await signup(username, email, password);
   }
 
@@ -60,6 +68,7 @@ export default function Register() {
           Registre-se
         </button>
         {error && <div className="error">{error}</div>}
+        {emailError && <div className="error">{emailError}</div>}
         <hr className="hr2" />
         <a href="/login" className="login-register">
           Já tenho uma conta
