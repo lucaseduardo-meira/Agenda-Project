@@ -24,12 +24,16 @@ export default function Day({ day, rowIdx }) {
       : "";
   }
   return (
-    <div className="border border-gray-200 flex flex-col">
+    <div className="border border-[#2c3035] border-[thin] flex flex-col">
       <header className="flex flex-col items-center">
         {rowIdx === 0 && (
-          <p className="text-sm mt-1 ">{week[day.format("d").toUpperCase()]}</p>
+          <p className="text-sm mt-1 text-[#b5b7ba]">
+            {week[day.format("d").toUpperCase()]}
+          </p>
         )}
-        <p className={`text-sm p-1 my-1 text-center ${getCurrentDayClass()}`}>
+        <p
+          className={`text-sm p-1 my-1 text-center text-[#9a9ea1] ${getCurrentDayClass()}`}
+        >
           {day.format("DD")}
         </p>
       </header>
