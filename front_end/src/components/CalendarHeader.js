@@ -43,7 +43,10 @@ export default function CalendarHeader() {
       <header className="px-4 py-2 flex items-center bg-[#191919]">
         <img src={logo} alt="logo" className="mr-2 w-12 h-12" />
         <h1 className="mr-10 text-xl text-gray-500 fond-bold">Agenda</h1>
-        <button onClick={handleReset} className="border rounded py-2 px-4 mr-5">
+        <button
+          onClick={handleReset}
+          className="border border-[#282b2f] rounded py-2 px-4 mr-5 text-[#919497]"
+        >
           Hoje
         </button>
         <button onClick={handlePrevMonth}>
