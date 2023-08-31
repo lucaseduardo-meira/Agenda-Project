@@ -40,7 +40,7 @@ export default function CalendarHeader() {
 
   return (
     <div>
-      <header className="px-4 py-2 flex items-center">
+      <header className="px-4 py-2 flex items-center bg-[#191919]">
         <img src={logo} alt="logo" className="mr-2 w-12 h-12" />
         <h1 className="mr-10 text-xl text-gray-500 fond-bold">Agenda</h1>
         <button onClick={handleReset} className="border rounded py-2 px-4 mr-5">
