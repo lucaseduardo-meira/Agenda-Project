@@ -104,8 +104,8 @@ export default function EventModel() {
 
   return (
     <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center">
-      <form className="bg-white rounded-lg shadow-2xl w-1/4">
-        <header className="bg-gray-100 px-4 py-2 flex justify-between items-center">
+      <form className="bg-[#080808] rounded-lg shadow-2xl w-1/4">
+        <header className="bg-[#101010] px-4 py-2 flex justify-between items-center">
           <span className="material-icons-outlined text-gray-400">
             drag_handle
           </span>
@@ -142,7 +142,7 @@ export default function EventModel() {
               placeholder="Adicionar Título"
               value={title}
               required
-              className="pt-3 border-0 text-gray-600 text-xl font-semibold pb-2 w-full border-b-2 border-gray-200 focus:outline-none focus:ring-0 focus:border-blue-500"
+              className="pt-3 border-0 text-gray-600 text-xl bg-[#101010] font-semibold pb-2 w-full border-b-2 border-[#101010]-200 focus:outline-none focus:ring-0 focus:border-blue-500"
               onChange={(e) => {
                 setTitle(e.target.value);
               }}
@@ -150,7 +150,7 @@ export default function EventModel() {
             <span className="material-icons-outlined text-gray-400">
               schedule
             </span>
-            <p>
+            <p className="text-[#C6C6C6]">
               {semana[daySelected.format("d")]}
               {", "}
               {daySelected.format("D")}
@@ -166,7 +166,7 @@ export default function EventModel() {
               placeholder="Adicionar uma descrição"
               value={description}
               required
-              className="pt-3 border-0 text-gray-600 pb-2 w-full border-b-2 border-gray-200 focus:outline-none focus:ring-0 focus:border-blue-500"
+              className="pt-3 border-0 text-gray-600 pb-2 w-full border-b-2 bg-[#101010] border-[#101010]-200  focus:outline-none focus:ring-0 focus:border-blue-500"
               onChange={(e) => {
                 setDescription(e.target.value);
               }}
