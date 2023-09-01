@@ -45,22 +45,22 @@ export default function CalendarHeader() {
         <h1 className="mr-10 text-xl text-[#aeb1b2] fond-bold">Agenda</h1>
         <button
           onClick={handleReset}
-          className="border border-[#282b2f] rounded py-2 px-4 mr-5 text-[#aeb1b2]"
+          className="border border-[#282b2f] rounded py-2 px-4 mr-5 text-[#BBC0C3]"
         >
           Hoje
         </button>
         <button onClick={handlePrevMonth}>
-          <span className="material-icons-outlined cursor-pointer text-[#aeb1b2] mx-2">
+          <span className="material-icons-outlined cursor-pointer text-[#BBBFC2] mx-2">
             chevron_left
           </span>
         </button>
         <button onClick={handleNextMonth}>
-          <span className="material-icons-outlined cursor-pointer text-[#aeb1b2] mx-2">
+          <span className="material-icons-outlined cursor-pointer text-[#BBBFC2] mx-2">
             chevron_right
           </span>
         </button>
 
-        <h2 className="ml-4 text-xl text-[#aeb1b2] font-bold">
+        <h2 className="ml-4 text-xl text-[#BBC0C3] font-bold">
           {meses[dayjs(new Date(dayjs().year(), monthIndex)).format("M") - 1]}{" "}
           {dayjs(new Date(dayjs().year(), monthIndex)).format("YYYY")}
         </h2>
