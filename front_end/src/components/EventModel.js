@@ -155,7 +155,7 @@ export default function EventModel() {
               {", "}
               {daySelected.format("D")}
               {" de "}
-              {meses[daySelected.format("M")]}
+              {meses[daySelected.format("M") - 1]}
             </p>
             <span className="material-icons-outlined text-gray-400">
               segment
