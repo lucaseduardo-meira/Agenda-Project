@@ -44,9 +44,9 @@ export default function SmallCalendar() {
     const currDay = day.format(format);
     const slcDay = daySelected && daySelected.format(format);
     if (nowDay === currDay) {
-      return "bg-blue-500 rounded-full text-white";
+      return "bg-blue-500 rounded-full text-[#FFFFFF]";
     } else if (currDay === slcDay) {
-      return "bg-blue-100 rounded-full text-blue-600 font-bold";
+      return "bg-[#122646] rounded-full text-blue-600 font-bold";
     } else {
       return "";
     }
@@ -64,12 +64,12 @@ export default function SmallCalendar() {
         </p>
         <div>
           <button onClick={handlePrevMonth}>
-            <span className="material-icons-outlined cursor-pointer text-[#abaeb1] mx-2">
+            <span className="material-icons-outlined cursor-pointer text-[#B3B7B9] mx-2">
               chevron_left
             </span>
           </button>
           <button onClick={handleNextMonth}>
-            <span className="material-icons-outlined cursor-pointer text-[#abaeb1] mx-2">
+            <span className="material-icons-outlined cursor-pointer text-[#B3B7B9] mx-2">
               chevron_right
             </span>
           </button>
@@ -77,7 +77,7 @@ export default function SmallCalendar() {
       </header>
       <div className="grid grid-cols-7 grid-rows-6">
         {currentMonth[0].map((day, i) => (
-          <span key={i} className="text-sm py-1 text-center text-[#7e7f81]">
+          <span key={i} className="text-sm py-1 text-center text-[#BDBFC2]">
             {week[day.format("d")]}
           </span>
         ))}
@@ -90,11 +90,9 @@ export default function SmallCalendar() {
                   setSmallCalendarMonth(currentMonthIdx);
                   setDaySelected(day);
                 }}
-                className={`py-1 w-full ${getDayClass(day)}`}
+                className={`py-1 w-full text-[#BBC0C3] ${getDayClass(day)}`}
               >
-                <span className="text-sm text-[#a0a5a7]">
-                  {day.format("D")}
-                </span>
+                <span className="text-sm">{day.format("D")}</span>
               </button>
             ))}
           </React.Fragment>
